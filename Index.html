@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Youniverse — Women's Western Wear | Shirts & Jeans, Dadar Mumbai</title>
+  <meta name="description" content="Youniverse — family-run women's western wear brand in Dadar West, Mumbai. In-house manufactured ladies' shirts, jeans, denim jackets & linen shirts. Fabric first. Always." />
+  <meta name="theme-color" content="#B8895A" />
+
+  <!-- Open Graph (for link previews on Instagram, WhatsApp & Facebook) -->
+  <meta property="og:title" content="Youniverse — Women's Western Wear, Dadar Mumbai" />
+  <meta property="og:description" content="More than garments. It's energy you wear. In-house manufactured western clothing." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="hero.jpg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --gold: #B8895A;
+      --gold-dark: #9c7248;
+      --cream: #faf6f1;
+      --off-white: #f3ece3;
+      --ink: #2b2620;
+      --muted: #6f665b;
+      --white: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: 0.5px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container { width: 90%; max-width: 1150px; margin: 0 auto; }
+
+    .tagline-small {
+      font-size: 0.8rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-block;
+      padding: 14px 30px;
+      border-radius: 2px;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: 1px solid var(--gold);
+    }
+    .btn-primary { background: var(--gold); color: #fff; }
+    .btn-primary:hover { background: var(--gold-dark); border-color: var(--gold-dark); }
+    .btn-outline { background: transparent; color: var(--gold); }
+    .btn-outline:hover { background: var(--gold); color: #fff; }
+
+    /* ---------- Navbar ---------- */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250, 246, 241, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(184,137,90,0.2);
+    }
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 0;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 12px; }
+    .nav-brand img { height: 46px; width: auto; }
+    .nav-brand .name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; letter-spacing: 5px; color: var(--gold);
+    }
+    .nav-links { display: flex; gap: 30px; }
+    .nav-links a {
+      font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--muted); transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-toggle { display: none; background: none; border: none; font-size: 1.6rem; color: var(--gold); cursor: pointer; }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      min-height: 88vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      background:
+        linear-gradient(rgba(43,38,32,0.35), rgba(43,38,32,0.45)),
+        url('hero.jpg') center/cover no-repeat;
+      color: #fff;
+      padding: 60px 0;
+    }
+    .hero-inner img { height: 120px; margin-bottom: 20px; }
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      letter-spacing: 8px; color: #fff;
+    }
+    .hero .tag {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 3vw, 1.6rem);
+      margin: 14px 0 30px;
+    }
+    .hero .sub { letter-spacing: 5px; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 30px; opacity: 0.9; }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .hero .btn-outline { color: #fff; border-color: #fff; }
+    .hero .btn-outline:hover { background: #fff; color: var(--gold); }
+
+    /* ---------- Sections ---------- */
+    section { padding: 90px 0; }
+    .section-title { text-align: center; margin-bottom: 50px; }
+    .section-title h2 { font-size: clamp(2rem, 5vw, 2.8rem); }
+
+    /* ---------- About ---------- */
+    .about { background: var(--off-white); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+    .about-text h2 { font-size: clamp(2rem, 5vw, 2.8rem); margin-bottom: 20px; }
+    .about-text p { color: var(--muted); margin-bottom: 16px; }
+    .about-img img { width: 100%; border-radius: 3px; display: block; }
+
+    /* ---------- Collections ---------- */
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .card {
+      position: relative; overflow: hidden; border-radius: 3px;
+      aspect-ratio: 3/4; background: var(--off-white);
+    }
+    .card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block; }
+    .card:hover img { transform: scale(1.06); }
+    .card span {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(43,38,32,0.75));
+      color: #fff; padding: 30px 16px 16px;
+      font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; letter-spacing: 1px;
+    }
+
+    /* ---------- Why ---------- */
+    .why { background: var(--off-white); }
+    .grid-4-why { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; }
+    .feature { text-align: center; padding: 20px; }
+    .feature .ic { font-size: 2rem; margin-bottom: 12px; }
+    .feature h3 { font-size: 1.4rem; margin-bottom: 8px; }
+    .feature p { color: var(--muted); font-size: 0.95rem; }
+
+    /* ---------- Testimonials ---------- */
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .quote {
+      background: #fff; padding: 34px 28px; border-radius: 3px;
+      border-top: 3px solid var(--gold);
+      box-shadow: 0 6px 22px rgba(43,38,32,0.05);
+    }
+    .quote .stars { color: var(--gold); letter-spacing: 2px; margin-bottom: 12px; }
+    .quote p { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-style: italic; color: var(--ink); margin-bottom: 14px; }
+    .quote .who { font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+
+    /* ---------- Visit ---------- */
+    .visit { background: var(--off-white); }
+    .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: stretch; }
+    .visit-info h2 { font-size: clamp(2rem, 5vw, 2.8rem); margin-bottom: 20px; }
+    .visit-info p { color: var(--muted); margin-bottom: 10px; }
+    .visit-info strong { color: var(--ink); }
+    .visit-map iframe { width: 100%; height: 100%; min-height: 340px; border: 0; border-radius: 3px; }
+
+    /* ---------- Footer ---------- */
+    footer { background: var(--ink); color: #d8cfc3; text-align: center; padding: 50px 0 30px; }
+    footer .fname { font-family: 'Cormorant Garamond', serif; font-size: 2rem; letter-spacing: 6px; color: var(--gold); }
+    footer .ftag { font-style: italic; font-family: 'Cormorant Garamond', serif; margin: 8px 0 20px; }
+    footer .socials { display: flex; gap: 24px; justify-content: center; margin-bottom: 24px; }
+    footer .socials a { font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: #d8cfc3; transition: color 0.2s; }
+    footer .socials a:hover { color: var(--gold); }
+    footer .copy { font-size: 0.75rem; color: #8a7f70; letter-spacing: 1px; }
+
+    /* ---------- Floating WhatsApp ---------- */
+    .wa-float {
+      position: fixed; bottom: 22px; right: 22px; z-index: 200;
+      background: #25D366; color: #fff; border-radius: 50px;
+      padding: 14px 20px; font-weight: 500; letter-spacing: 1px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2); font-size: 0.9rem;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .wa-float:hover { background: #1ebe5a; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 900px) {
+      .grid-4, .grid-4-why { grid-template-columns: repeat(2, 1fr); }
+      .grid-3 { grid-template-columns: 1fr; }
+      .about-grid, .visit-grid { grid-template-columns: 1fr; }
+      .nav-links {
+        display: none; position: absolute; top: 78px; left: 0; right: 0;
+        flex-direction: column; gap: 0; background: var(--cream);
+        border-bottom: 1px solid rgba(184,137,90,0.2);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 14px 5%; border-top: 1px solid rgba(184,137,90,0.12); }
+      .nav-toggle { display: block; }
+    }
+    @media (max-width: 520px) {
+      .grid-4 { grid-template-columns: 1fr 1fr; }
+      section { padding: 60px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header>
+    <div class="container">
+      <nav>
+        <a class="nav-brand" href="#top">
+          <img src="logo.png" alt="Youniverse logo" onerror="this.style.display='none'" />
+          <span class="name">YOUNIVERSE</span>
+        </a>
+        <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">&#9776;</button>
+        <div class="nav-links" id="navLinks">
+          <a href="#about">About</a>
+          <a href="#collections">Collections</a>
+          <a href="#why">Why Us</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#visit">Visit</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="top">
+    <div class="hero-inner container">
+      <img src="logo.png" alt="Youniverse" onerror="this.style.display='none'" />
+      <h1>YOUNIVERSE</h1>
+      <p class="tag">More than garments. It's energy you wear.</p>
+      <p class="sub">Inspired &nbsp;·&nbsp; Original &nbsp;·&nbsp; Unbound</p>
+      <div class="hero-btns">
+        <a class="btn btn-primary" href="https://wa.me/919967111111?text=Hi%20Youniverse%2C%20I%27d%20like%20to%20know%20more%20about%20your%20collection." target="_blank" rel="noopener">Enquire on WhatsApp</a>
+        <a class="btn btn-outline" href="https://www.instagram.com/youniversegarments/" target="_blank" rel="noopener">Follow on Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about" id="about">
+    <div class="container about-grid">
+      <div class="about-text">
+        <p class="tagline-small">Our Story</p>
+        <h2>Made in Mumbai,<br>made for you.</h2>
+        <p>Youniverse is a family-run women's western-wear label born in the heart of Dadar, Mumbai. From ladies' shirts and jeans to denim jackets and breezy linen, every piece is crafted in-house — which means we control the quality, the fit, and the fabric ourselves.</p>
+        <p>We believe great clothing starts with great fabric. <strong>Fabric first. Always.</strong> It's why our customers keep coming back, and why every garment carries a little bit of our name.</p>
+        <p class="tagline-small">Inspired · Original · Unbound</p>
+      </div>
+      <div class="about-img">
+        <img src="about.jpg" alt="Youniverse garments made in-house" onerror="this.src='https://placehold.co/600x750/f3ece3/B8895A?text=Dadar+Store+Photo'" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COLLECTIONS ===== -->
+  <section id="collections">
+    <div class="container">
+      <div class="section-title">
+        <p class="tagline-small">Our Collections</p>
+        <h2>What We Make</h2>
+      </div>
+      <div class="grid-4">
+        <div class="card">
+          <img src="shirts.jpg" alt="Ladies' Shirts" onerror="this.src='https://placehold.co/450x600/f3ece3/B8895A?text=Ladies+Shirts'" />
+          <span>Ladies' Shirts</span>
+        </div>
+        <div class="card">
+          <img src="jeans.jpg" alt="Jeans" onerror="this.src='https://placehold.co/450x600/f3ece3/B8895A?text=Jeans'" />
+          <span>Jeans</span>
+        </div>
+        <div class="card">
+          <img src="denim.jpg" alt="Denim Jackets" onerror="this.src='https://placehold.co/450x600/f3ece3/B8895A?text=Denim+Jackets'" />
+          <span>Denim Jackets</span>
+        </div>
+        <div class="card">
+          <img src="linen.jpg" alt="Linen Shirts" onerror="this.src='https://placehold.co/450x600/f3ece3/B8895A?text=Linen+Shirts'" />
+          <span>Linen Shirts</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY ===== -->
+  <section class="why" id="why">
+    <div class="container">
+      <div class="section-title">
+        <p class="tagline-small">Why Youniverse</p>
+        <h2>The Difference Is In The Details</h2>
+      </div>
+      <div class="grid-4-why">
+        <div class="feature">
+          <div class="ic">🧵</div>
+          <h3>In-House Made</h3>
+          <p>Designed and manufactured by us, from fabric to finish.</p>
+        </div>
+        <div class="feature">
+          <div class="ic">📍</div>
+          <h3>Made in Mumbai</h3>
+          <p>Proudly crafted in Dadar West since day one.</p>
+        </div>
+        <div class="feature">
+          <div class="ic">✨</div>
+          <h3>Fabric & Fit</h3>
+          <p>Premium fabrics and a fit that actually flatters.</p>
+        </div>
+        <div class="feature">
+          <div class="ic">⭐</div>
+          <h3>Loved by Many</h3>
+          <p>5-star rated by customers across Mumbai and beyond.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section id="reviews">
+    <div class="container">
+      <div class="section-title">
+        <p class="tagline-small">Kind Words</p>
+        <h2>What Our Customers Say</h2>
+      </div>
+      <div class="grid-3">
+        <div class="quote">
+          <div class="stars">★★★★★</div>
+          <p>"Nice collection, beautiful shirts — you'll fall in love with the fitting and fabric quality."</p>
+          <div class="who">— Priyanka S.</div>
+        </div>
+        <div class="quote">
+          <div class="stars">★★★★★</div>
+          <p>"Really impressed with the shirt quality. Stylish workwear and casuals at reasonable prices."</p>
+          <div class="who">— Ananya M.</div>
+        </div>
+        <div class="quote">
+          <div class="stars">★★★★★</div>
+          <p>"A well-known brand in Dadar with a lovely western collection. Highly recommend visiting!"</p>
+          <div class="who">— Ritu K.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VISIT ===== -->
+  <section class="visit" id="visit">
+    <div class="container visit-grid">
+      <div class="visit-info">
+        <p class="tagline-small">Come Say Hi</p>
+        <h2>Visit Our Store</h2>
+        <p><strong>Youniverse</strong><br>Shop No. 09, Ram Shyam Krupa CHS,<br>Garage Galli, near Atlantic Plaza, near Om Gopal,<br>Dadar West, Mumbai, Maharashtra 400028</p>
+        <p><strong>Hours:</strong> Mon–Sat, 10:30 AM – 8:30 PM</p>
+        <p><strong>WhatsApp:</strong> +91 99671 11111</p>
+        <br>
+        <a class="btn btn-primary" href="https://wa.me/919967111111?text=Hi%20Youniverse%2C%20I%27d%20like%20to%20know%20more%20about%20your%20collection." target="_blank" rel="noopener">Message Us on WhatsApp</a>
+      </div>
+      <div class="visit-map">
+        <iframe
+          src="https://maps.google.com/maps?q=Youniverse%20Garments%20Garage%20Galli%20Dadar%20West%20Mumbai&t=&z=15&ie=UTF8&iwloc=&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Youniverse location map"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <div class="fname">YOUNIVERSE</div>
+      <p class="ftag">More than garments. It's energy you wear.</p>
+      <div class="socials">
+        <a href="https://www.instagram.com/youniversegarments/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/youniversegarments/" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://wa.me/919967111111?text=Hi%20Youniverse" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+      <p class="copy">© <span id="year"></span> Youniverse · Dadar West, Mumbai · All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp button -->
+  <a class="wa-float" href="https://wa.me/919967111111?text=Hi%20Youniverse%2C%20I%27d%20like%20to%20know%20more%20about%20your%20collection." target="_blank" rel="noopener">
+    <span>💬</span> WhatsApp Us
+  </a>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.querySelectorAll('#navLinks a').forEach(function(a){
+      a.addEventListener('click', function(){
+        document.getElementById('navLinks').classList.remove('open');
+      });
+    });
+  </script>
+
+</body>
+</html>
