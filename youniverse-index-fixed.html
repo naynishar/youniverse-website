@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Youniverse — Women's Wear | Dadar Mumbai</title>
+  <meta name="description" content="Youniverse — family-run women's western wear brand in Dadar West, Mumbai. Fabric first. Always." />
+  <meta name="theme-color" content="#070707" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Outfit:wght@300;400;500;600&family=Syne:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --bg:#070707; --bg2:#10100e; --bg3:#171512; --ivory:#f4ebe1; --gold:#c9a66b; --gold2:#e8c9a0; --muted:#9a9084; --line:rgba(201,166,107,.22); }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--bg); color:var(--ivory); font-family:"Outfit",sans-serif; line-height:1.6; overflow-x:hidden; cursor:none; }
+    a { color:inherit; text-decoration:none; }
+    img { display:block; max-width:100%; }
+    .container { width:min(1180px,92%); margin:auto; position:relative; z-index:2; }
+
+    .noise { position:fixed; inset:0; pointer-events:none; z-index:80; opacity:.045; mix-blend-mode:overlay; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+    .cursor,.cursor-dot { position:fixed; top:0; left:0; z-index:200; pointer-events:none; border-radius:50%; transform:translate(-50%,-50%); }
+    .cursor { width:34px; height:34px; border:1px solid rgba(232,201,160,.72); transition:width .3s cubic-bezier(.16,1,.3,1),height .3s cubic-bezier(.16,1,.3,1),background .3s; }
+    .cursor.hover { width:58px; height:58px; background:rgba(201,166,107,.09); border-color:var(--gold2); }
+    .cursor-dot { width:4px; height:4px; background:var(--gold2); }
+
+    header { position:fixed; inset:0 0 auto; z-index:90; background:rgba(7,7,7,.72); backdrop-filter:blur(14px); border-bottom:1px solid var(--line); }
+    nav { height:72px; padding:0 4vw; display:flex; align-items:center; justify-content:space-between; }
+    .brand { display:flex; align-items:center; gap:12px; font:13px "Syne",sans-serif; letter-spacing:.42em; }
+    .brand img { height:36px; width:auto; }
+    .nav-links { display:flex; gap:28px; }
+    .nav-links a,.nav-cta { font-size:11px; letter-spacing:.22em; text-transform:uppercase; }
+    .nav-cta { border:1px solid var(--gold); padding:10px 16px; color:var(--gold2); }
+    .nav-toggle { display:none; background:none; border:0; color:var(--ivory); font-size:22px; }
+
+    .hero { min-height:100vh; display:grid; place-items:center; padding:120px 0 80px; text-align:center; position:relative; overflow:hidden; }
+    .hero-media { position:absolute; inset:0; }
+    .hero-media img { width:100%; height:100%; object-fit:cover; filter:grayscale(.25) contrast(1.04) brightness(.68); transform:scale(1.07); animation:ken 18s ease-in-out infinite alternate; }
+    .hero-media::after { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at center,rgba(7,7,7,.04) 10%,rgba(7,7,7,.42) 78%),linear-gradient(180deg,rgba(7,7,7,.14),rgba(7,7,7,.62)); }
+    @keyframes ken { to { transform:scale(1.16) translateY(-2%); } }
+    .hero-inner { position:relative; z-index:2; }
+    .kicker { color:var(--gold); font-size:11px; letter-spacing:.42em; text-transform:uppercase; margin-bottom:14px; }
+    .hero h1 { font:500 clamp(3.2rem,10.6vw,9.2rem)/.88 "Bodoni Moda",serif; white-space:nowrap; letter-spacing:.015em; background:linear-gradient(90deg,#fff,var(--gold2),#d08cff,var(--gold)); background-size:200% auto; -webkit-background-clip:text; background-clip:text; color:transparent; animation:shimmer 6s linear infinite; }
+    @keyframes shimmer { to { background-position:200% center; } }
+    .hero-tag { font:italic clamp(1.15rem,2.4vw,1.8rem) "Bodoni Moda",serif; margin:22px 0 10px; }
+    .hero-sub { color:var(--muted); font-size:11px; letter-spacing:.42em; text-transform:uppercase; margin-bottom:36px; }
+    .hero-btns { display:flex; justify-content:center; gap:14px; flex-wrap:wrap; }
+    .btn { display:inline-block; padding:15px 26px; border:1px solid var(--gold); font-size:11px; letter-spacing:.22em; text-transform:uppercase; transition:.3s; }
+    .btn:hover { background:var(--ivory); color:#111; }
+    .btn-fill { background:var(--gold); color:#111; }
+
+    .marquee { padding:16px 0; border-block:1px solid var(--line); overflow:hidden; text-align:center; color:var(--gold2); font:12px "Syne",sans-serif; letter-spacing:.25em; text-transform:uppercase; }
+    section { padding:105px 0; position:relative; z-index:2; }
+    h2 { font:500 clamp(2.4rem,6vw,4.6rem)/1.05 "Bodoni Moda",serif; }
+    .about-grid,.visit-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+    .about-copy p,.visit-info p { color:var(--muted); margin:16px 0; }
+    .about-copy strong,.visit-info strong { color:var(--ivory); }
+    .frame img { width:100%; aspect-ratio:4/5; object-fit:cover; filter:grayscale(.15); }
+    .looks-head { display:flex; justify-content:space-between; align-items:end; gap:24px; margin-bottom:36px; }
+    .looks-head > p { max-width:420px; color:var(--muted); }
+    .rail { display:grid; grid-auto-flow:column; grid-auto-columns:minmax(280px,22vw); gap:18px; overflow-x:auto; padding-bottom:18px; }
+    .look { height:460px; position:relative; overflow:hidden; background:var(--bg3); }
+    .look img { width:100%; height:100%; object-fit:cover; filter:grayscale(.25); transition:.7s; }
+    .look:hover img { filter:none; transform:scale(1.06); }
+    .look::after { content:""; position:absolute; inset:0; background:linear-gradient(transparent 45%,rgba(0,0,0,.75)); }
+    .look figcaption { position:absolute; z-index:1; bottom:18px; left:18px; right:18px; font:1.7rem "Bodoni Moda",serif; }
+    .drops,.visit { background:var(--bg2); }
+    .drop-grid,.why-grid,.quotes { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:40px; }
+    .drop-card,.why-card,.quote { padding:28px; border:1px solid var(--line); background:var(--bg3); }
+    .drop-card h3,.why-card h3 { font:1.7rem "Bodoni Moda",serif; margin:12px 0; }
+    .drop-card p,.why-card p { color:var(--muted); }
+    .quote { border-top-color:var(--gold); }
+    .quote p { font:italic 1.3rem/1.35 "Bodoni Moda",serif; margin:12px 0; }
+    .stars { color:var(--gold); letter-spacing:3px; }
+    .visit-map iframe { width:100%; min-height:360px; border:0; filter:grayscale(1) invert(.9); }
+    footer { border-top:1px solid var(--line); text-align:center; padding:60px 0 35px; }
+    .fname { font:clamp(2.4rem,8vw,5.5rem) "Bodoni Moda",serif; letter-spacing:.18em; }
+    .ftag { font:italic 1.2rem "Bodoni Moda",serif; color:var(--muted); margin:8px 0 22px; }
+    .socials { display:flex; justify-content:center; gap:24px; margin-bottom:22px; }
+    .socials a { color:var(--gold2); font-size:11px; letter-spacing:.2em; text-transform:uppercase; }
+    .copy { color:#6e665c; font-size:12px; }
+    .wa-float { position:fixed; right:22px; bottom:22px; z-index:95; background:#25d366; color:#063; padding:13px 18px; border-radius:999px; font-weight:600; }
+
+    @media(max-width:900px) { body{cursor:auto}.cursor,.cursor-dot{display:none}.nav-links{display:none}.nav-toggle{display:block}.nav-cta{display:none}.about-grid,.visit-grid,.drop-grid,.why-grid,.quotes{grid-template-columns:1fr}.looks-head{display:block}.looks-head>p{margin-top:14px}.hero h1{font-size:clamp(2.45rem,12vw,6rem)} }
+    @media(max-width:520px) { section{padding:72px 0}.hero h1{font-size:clamp(2.05rem,12.5vw,4rem)} }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="cursor" id="cursor"></div><div class="cursor-dot" id="dot"></div>
+  <header><nav>
+    <a class="brand" href="#top"><img src="logo.png" alt="Youniverse logo" onerror="this.style.display='none'" />YOUNIVERSE</a>
+    <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+    <div class="nav-links" id="navLinks"><a href="#about">About</a><a href="#collections">Looks</a><a href="#drops">Drops</a><a href="#why">Atelier</a><a href="#visit">Visit</a></div>
+    <a class="nav-cta" href="https://wa.me/919967111111" target="_blank" rel="noopener">WhatsApp</a>
+  </nav></header>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="hero-media"><img src="hero.jpg" alt="Youniverse fashion" onerror="this.src='https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=2000&q=80'" /></div>
+      <div class="hero-inner container">
+        <p class="kicker">Dadar West · Mumbai</p><h1>YOUNIVERSE</h1>
+        <p class="hero-tag">More than garments. It's energy you wear.</p><p class="hero-sub">Inspired · Original · Unbound</p>
+        <div class="hero-btns"><a class="btn btn-fill" href="https://wa.me/919967111111" target="_blank" rel="noopener">Enquire on WhatsApp</a><a class="btn" href="https://www.instagram.com/youniversegarments/" target="_blank" rel="noopener">Follow the Drip</a></div>
+      </div>
+    </section>
+    <div class="marquee">Fabric first. Always. ✦ In-house manufactured ✦ Ladies' shirts · Jeans · Denim · Linen ✦ Art you can wear</div>
+
+    <section id="about"><div class="container about-grid"><div class="about-copy"><p class="kicker">Our story</p><h2>Made in Mumbai,<br>made for you.</h2><p>Youniverse is a family-run women's western-wear label born in the heart of Dadar, Mumbai. From ladies' shirts and jeans to denim jackets and breezy linen, every piece is crafted in-house.</p><p><strong>Fabric first. Always.</strong> We control the quality, the fit, and the fabric ourselves.</p></div><div class="frame"><img src="about.jpg" alt="Youniverse garments made in-house" onerror="this.src='https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=1200&q=80'" /></div></div></section>
+
+    <section id="collections"><div class="container"><div class="looks-head"><div><p class="kicker">Lookbook 01</p><h2>What we make</h2></div><p>Four signatures, cut in-house, worn like energy.</p></div><div class="rail"><figure class="look"><img src="shirts.jpg" alt="Ladies' Shirts" onerror="this.src='https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=900&q=80'" /><figcaption>Ladies' Shirts</figcaption></figure><figure class="look"><img src="jeans.jpg" alt="Jeans" onerror="this.src='https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=900&q=80'" /><figcaption>Jeans</figcaption></figure><figure class="look"><img src="denim.jpg" alt="Denim Jackets" onerror="this.src='https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=900&q=80'" /><figcaption>Denim Jackets</figcaption></figure><figure class="look"><img src="linen.jpg" alt="Linen Shirts" onerror="this.src='https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80'" /><figcaption>Linen Shirts</figcaption></figure></div></div></section>
+
+    <section class="drops" id="drops"><div class="container"><p class="kicker">Now in the atelier</p><h2>New energy. Limited stitch.</h2><div class="drop-grid"><article class="drop-card"><h3>Art you can wear.</h3><p>Soulfully stitched. Limited suzani and boho energy meeting a western cut.</p></article><article class="drop-card"><h3>Botanical shirt.</h3><p>Fabric first. Always. Made to last longer than trends.</p></article><article class="drop-card"><h3>Made in Mumbai.</h3><p>In-house quality, fit, and finish from Dadar West.</p></article></div></div></section>
+
+    <section id="why"><div class="container"><p class="kicker">Why Youniverse</p><h2>The difference is in the details.</h2><div class="why-grid"><article class="why-card"><h3>In-house made</h3><p>Designed and manufactured by us, from fabric to finish.</p></article><article class="why-card"><h3>Made in Mumbai</h3><p>Proudly crafted in Dadar West since day one.</p></article><article class="why-card"><h3>Fabric & fit</h3><p>Premium fabrics and a fit that actually flatters.</p></article></div></div></section>
+
+    <section id="reviews"><div class="container"><p class="kicker">Kind words</p><h2>What our customers say.</h2><div class="quotes"><blockquote class="quote"><div class="stars">★★★★★</div><p>“Nice collection, beautiful shirts — you'll fall in love with the fitting and fabric quality.”</p><small>— Priyanka S.</small></blockquote><blockquote class="quote"><div class="stars">★★★★★</div><p>“Really impressed with the shirt quality. Stylish workwear and casuals at reasonable prices.”</p><small>— Ananya M.</small></blockquote><blockquote class="quote"><div class="stars">★★★★★</div><p>“A well-known brand in Dadar with a lovely western collection.”</p><small>— Ritu K.</small></blockquote></div></div></section>
+
+    <section class="visit" id="visit"><div class="container visit-grid"><div class="visit-info"><p class="kicker">Come say hi</p><h2>Visit our store.</h2><p><strong>Youniverse</strong><br>Shop No. 09, Ram Shyam Krupa CHS,<br>Garage Galli, near Atlantic Plaza, Dadar West,<br>Mumbai, Maharashtra 400028</p><p><strong>Hours:</strong> Mon–Sat, 10:30 AM – 8:30 PM</p><p><strong>WhatsApp:</strong> +91 99671 11111</p><a class="btn btn-fill" href="https://wa.me/919967111111" target="_blank" rel="noopener">Message us on WhatsApp</a></div><div class="visit-map"><iframe src="https://maps.google.com/maps?q=Youniverse%20Garments%20Garage%20Galli%20Dadar%20West%20Mumbai&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" title="Youniverse location map"></iframe></div></div></section>
+  </main>
+  <footer><div class="container"><div class="fname">YOUNIVERSE</div><p class="ftag">More than garments. It's energy you wear.</p><div class="socials"><a href="https://www.instagram.com/youniversegarments/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/youniversegarments/" target="_blank" rel="noopener">Facebook</a><a href="https://wa.me/919967111111" target="_blank" rel="noopener">WhatsApp</a></div><p class="copy">© <span id="year"></span> Youniverse · Dadar West, Mumbai · All rights reserved.</p></div></footer>
+  <a class="wa-float" href="https://wa.me/919967111111" target="_blank" rel="noopener">WhatsApp us</a>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const cursor=document.getElementById('cursor'), dot=document.getElementById('dot'); let mx=0,my=0,cx=0,cy=0;
+    window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px'});
+    (function move(){cx+=(mx-cx)*.18;cy+=(my-cy)*.18;cursor.style.left=cx+'px';cursor.style.top=cy+'px';requestAnimationFrame(move)})();
+    document.querySelectorAll('a,button,.look').forEach(el=>{el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'))});
+  </script>
+</body>
+</html>
