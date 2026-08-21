@@ -47,8 +47,15 @@
       position: fixed; top: 0; left: 0; pointer-events: none; z-index: 200; border-radius: 50%; transform: translate(-50%, -50%);
     }
     .cursor { width: 34px; height: 34px; border: 1px solid rgba(232, 201, 160, 0.7); transition: width .25s, height .25s, background .25s, border-color .25s; }
-    .cursor.hover { width: 86px; height: 86px; background: rgba(201, 166, 107, 0.12); border-color: var(--gold-2); }
-    .cursor-dot { width: 6px; height: 6px; background: var(--gold-2); }
+.cursor.hover {
+  width: 58px;
+  height: 58px;
+  background: rgba(201, 166, 107, 0.09);
+  border-color: var(--gold-2);
+.cursor-dot {
+  width: 4px;
+  height: 4px;
+  background: var(--gold-2);
     .cursor span { position: absolute; inset: 0; display: grid; place-items: center; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; opacity: 0; }
     .cursor.hover span { opacity: 1; }
     .progress { position: fixed; top: 0; left: 0; height: 2px; width: 0; z-index: 120; background: linear-gradient(90deg, var(--gold), #fff6e8, var(--gold)); }
@@ -85,13 +92,30 @@
     .nav-toggle { display: none; background: none; border: 0; color: var(--ivory); font-size: 22px; cursor: none; }
     .hero { min-height: 100vh; display: grid; place-items: center; padding: 120px 0 80px; position: relative; }
     .hero-media { position: absolute; inset: 0; z-index: 0; }
-    .hero-media img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(.35) contrast(1.05) brightness(.45); transform: scale(1.08); animation: ken 18s ease-in-out infinite alternate; }
+    .hero-media img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(.25) contrast(1.04) brightness(.68); transform: scale(1.08); animation: ken 18s ease-in-out infinite alternate; }
     @keyframes ken { to { transform: scale(1.18) translateY(-2%); } }
-    .hero-media::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 20%, #070707 78%), linear-gradient(180deg, rgba(7,7,7,.25), rgba(7,7,7,.85)); }
+.hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, rgba(7,7,7,.04) 10%, rgba(7,7,7,.42) 78%),
+    linear-gradient(180deg, rgba(7,7,7,.14), rgba(7,7,7,.62));
     .hero-inner { text-align: center; z-index: 2; }
     .hero-kicker { letter-spacing: .5em; font-size: 11px; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
-    .hero h1 { font-family: "Bodoni Moda", serif; font-weight: 500; font-size: clamp(4.2rem, 16vw, 12rem); line-height: .82; letter-spacing: .04em; }
-    .hero h1 em { font-style: italic; display: block; background: linear-gradient(90deg, #fff, var(--gold-2), #d08cff, var(--gold)); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shimmer 6s linear infinite; }
+.hero h1 {
+  font-family: "Bodoni Moda", serif;
+  font-weight: 500;
+  font-size: clamp(3.2rem, 10.6vw, 9.2rem);
+  line-height: .88;
+  letter-spacing: .015em;
+  white-space: nowrap;
+  background: linear-gradient(90deg, #fff, var(--gold-2), #d08cff, var(--gold));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 6s linear infinite;
     @keyframes shimmer { to { background-position: 200% center; } }
     .hero-tag { font-family: "Bodoni Moda", serif; font-style: italic; font-size: clamp(1.15rem, 2.4vw, 1.8rem); margin: 22px 0 10px; color: var(--ivory); }
     .hero-sub { letter-spacing: .42em; text-transform: uppercase; font-size: 11px; color: var(--muted); margin-bottom: 36px; }
@@ -229,12 +253,12 @@
     </div>
     <div class="hero-inner container">
       <p class="hero-kicker">Dadar West · Mumbai</p>
-      <h1>YOU<em>NIVERSE</em></h1>
-      <p class="hero-tag">More than garments. It's energy you wear.</p>
+<h1>YOUNIVERSE</h1>
+      <p class="hero-tag">More than garments. It's energy that you wear.</p>
       <p class="hero-sub">Inspired · Original · Unbound</p>
       <div class="hero-btns">
         <a class="btn btn-fill" data-cursor="chat" href="https://wa.me/919967111111?text=Hi%20Youniverse%2C%20I%27d%20like%20to%20know%20more%20about%20your%20collection." target="_blank" rel="noopener"><i></i>Enquire on WhatsApp</a>
-        <a class="btn btn-ghost" data-cursor="open" href="https://www.instagram.com/youniversegarments/" target="_blank" rel="noopener"><i></i>Follow the drop</a>
+        <a class="btn btn-ghost" data-cursor="open" href="https://www.instagram.com/youniversegarments/" target="_blank" rel="noopener"><i></i>Follow the drip</a>
       </div>
     </div>
   </section>
