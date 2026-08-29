@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Youniverse catalogue — original clothing made in Dadar, Mumbai.">
+  <title>Catalogue — Youniverse</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    :root{--bg:#fbf8f2;--ink:#171310;--line:#ded3c4;--cream:#f4ecdf}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    .wrap{width:100%;max-width:1500px;margin:0 auto;padding:0 18px}
+    header{position:sticky;top:0;z-index:20;background:rgba(251,248,242,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    header .wrap{min-height:68px;display:flex;align-items:center;justify-content:center}
+    .brand{font:800 18px Georgia,"Times New Roman",serif;letter-spacing:.28em;text-transform:uppercase;padding:14px 5px}
+    .brand:hover{opacity:.65}
+    .intro{text-align:center;padding:30px 0 24px}
+    .intro p{margin:0;font:700 11px "Courier New",monospace;letter-spacing:.14em;text-transform:uppercase}
+    .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;align-items:start;padding:0 0 64px}
+    .card{display:block;width:100%;margin:0;padding:0;border:0;background:var(--cream);overflow:hidden;cursor:pointer;line-height:0}
+    .card img{display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain;transition:transform .25s ease}
+    .card:hover img{transform:scale(1.02)}
+    .empty{grid-column:1/-1;padding:40px;text-align:center;font-size:15px}
+    .top{position:fixed;right:18px;bottom:18px;z-index:40;width:44px;height:44px;border:1px solid var(--ink);border-radius:50%;background:var(--ink);color:#fff;cursor:pointer;font-size:22px;opacity:0;visibility:hidden;transform:translateY(8px);transition:.2s}
+    .top.visible{opacity:1;visibility:visible;transform:none}
+    .top:hover{background:var(--cream);color:var(--ink)}
+    .lightbox{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(20,15,10,.94)}
+    .lightbox.active{display:flex}
+    .lightbox-inner{position:relative;display:flex;max-width:min(1100px,100%);max-height:100%;flex-direction:column;align-items:center}
+    .lightbox img{max-width:100%;max-height:82vh;object-fit:contain}
+    .close,.nav{position:absolute;display:grid;place-items:center;width:42px;height:42px;border:1px solid rgba(255,255,255,.7);border-radius:50%;background:rgba(0,0,0,.25);color:#fff;cursor:pointer;font-size:26px}
+    .close{top:-8px;right:-8px}.nav{top:45%;transform:translateY(-50%)}.prev{left:-58px}.next{right:-58px}
+    .enquire{margin-top:14px;padding:11px 16px;border:1px solid #fff;background:#fff;color:var(--ink);font:700 11px "Courier New",monospace;letter-spacing:.06em;text-transform:uppercase}
+    footer{border-top:1px solid var(--line);padding:28px 0 38px;text-align:center}footer a{font:700 16px Georgia,"Times New Roman",serif;letter-spacing:.12em;text-transform:uppercase}
+    @media(max-width:1100px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.prev{left:8px}.next{right:8px}}
+    @media(max-width:700px){.wrap{padding:0 10px}.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.brand{font-size:15px}.intro{padding:24px 0 18px}.top{right:12px;bottom:12px}}
+    @media(max-width:460px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}}
+  </style>
+</head>
+<body>
+  <header><div class="wrap"><a class="brand" href="index.html" aria-label="Return to homepage">Youniverse</a></div></header>
+  <main class="wrap" id="top"><section class="intro"><p>Full Range</p></section><section class="grid" id="grid" aria-label="Youniverse catalogue"></section></main>
+  <button class="top" id="topButton" type="button" aria-label="Back to top">↑</button>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true"><div class="lightbox-inner"><button class="close" id="close" type="button" aria-label="Close">×</button><button class="nav prev" id="prev" type="button" aria-label="Previous">‹</button><img id="largeImage" alt="Youniverse catalogue image"><button class="nav next" id="next" type="button" aria-label="Next">›</button><a class="enquire" id="enquire" target="_blank" rel="noopener">Enquire on WhatsApp</a></div></div>
+  <footer><div class="wrap"><a href="index.html">Youniverse</a></div></footer>
+  <script>
+    const imageFiles = [
+      "WhatsApp Image 2026-08-27 at 17.28.56 (1).jpeg","WhatsApp Image 2026-08-27 at 17.28.56 (10).jpeg","WhatsApp Image 2026-08-27 at 17.28.56 (11).jpeg","WhatsApp Image 2026-08-27 at 17.28.56 (12).jpeg","WhatsApp Image 2026-08-27 at 17.28.56 (13).jpeg","WhatsApp Image 2026-08-27 at 17.28.56 (14).jpeg","WhatsApp Image 2026-08-27 at 17.28.56 (15).jpeg","WhatsApp Image 2026-08-27 at 17.28.56 (16).jpeg","WhatsApp Image 2026-08-27 at 17.28.56 (2).jpeg","WhatsApp Image 2026-08-27 at 17.28.56 (3).jpeg","WhatsApp Image 2026-08-27 at 17.28.56 (4).jpeg","WhatsApp Image 2026-08-27 at 17.28.56 (5).jpeg","WhatsApp Image 2026-08-27 at 17.28.56 (6).jpeg","WhatsApp Image 2026-08-27 at 17.28.56 (7).jpeg","WhatsApp Image 2026-08-27 at 17.28.56 (8).jpeg","WhatsApp Image 2026-08-27 at 17.28.56 (9).jpeg","WhatsApp Image 2026-08-27 at 17.28.56.jpeg","WhatsApp Image 2026-08-27 at 17.29.35.jpeg","WhatsApp Image 2026-08-27 at 17.29.59.jpeg","WhatsApp Image 2026-08-27 at 17.30.15.jpeg","WhatsApp Image 2026-08-27 at 17.32.18 (1).jpeg","WhatsApp Image 2026-08-27 at 17.32.18.jpeg","WhatsApp Image 2026-08-27 at 17.32.19 (1).jpeg","WhatsApp Image 2026-08-27 at 17.32.19 (2).jpeg","WhatsApp Image 2026-08-27 at 17.32.19 (3).jpeg","WhatsApp Image 2026-08-27 at 17.32.19 (4).jpeg","WhatsApp Image 2026-08-27 at 17.32.19.jpeg","WhatsApp Image 2026-08-27 at 17.32.20 (1).jpeg","WhatsApp Image 2026-08-27 at 17.32.20 (10).jpeg","WhatsApp Image 2026-08-27 at 17.32.20 (11).jpeg","WhatsApp Image 2026-08-27 at 17.32.20 (12).jpeg","WhatsApp Image 2026-08-27 at 17.32.20 (13).jpeg","WhatsApp Image 2026-08-27 at 17.32.20 (14).jpeg","WhatsApp Image 2026-08-27 at 17.32.20 (15).jpeg","WhatsApp Image 2026-08-27 at 17.32.20 (16).jpeg","WhatsApp Image 2026-08-27 at 17.32.20 (17).jpeg","WhatsApp Image 2026-08-27 at 17.32.20 (18).jpeg","WhatsApp Image 2026-08-27 at 17.32.20 (19).jpeg","WhatsApp Image 2026-08-27 at 17.32.20 (2).jpeg","WhatsApp Image 2026-08-27 at 17.32.20 (20).jpeg","WhatsApp Image 2026-08-27 at 17.32.20 (3).jpeg","WhatsApp Image 2026-08-27 at 17.32.20 (4).jpeg","WhatsApp Image 2026-08-27 at 17.32.20 (5).jpeg","WhatsApp Image 2026-08-27 at 17.32.20 (6).jpeg","WhatsApp Image 2026-08-27 at 17.32.20 (7).jpeg","WhatsApp Image 2026-08-27 at 17.32.20 (8).jpeg","WhatsApp Image 2026-08-27 at 17.32.20 (9).jpeg","WhatsApp Image 2026-08-27 at 17.32.20.jpeg","WhatsApp Image 2026-08-27 at 17.35.46 (1).jpeg","WhatsApp Image 2026-08-27 at 17.35.46.jpeg","WhatsApp Image 2026-08-27 at 17.35.47 (1).jpeg","WhatsApp Image 2026-08-27 at 17.35.47 (2).jpeg","WhatsApp Image 2026-08-27 at 17.35.47 (3).jpeg","WhatsApp Image 2026-08-27 at 17.35.47 (4).jpeg","WhatsApp Image 2026-08-27 at 17.35.47 (5).jpeg","WhatsApp Image 2026-08-27 at 17.35.47 (6).jpeg","WhatsApp Image 2026-08-27 at 17.35.47 (7).jpeg","WhatsApp Image 2026-08-27 at 17.35.47.jpeg","WhatsApp Image 2026-08-27 at 17.35.48 (1).jpeg","WhatsApp Image 2026-08-27 at 17.35.48 (10).jpeg","WhatsApp Image 2026-08-27 at 17.35.48 (11).jpeg","WhatsApp Image 2026-08-27 at 17.35.48 (12).jpeg","WhatsApp Image 2026-08-27 at 17.35.48 (13).jpeg","WhatsApp Image 2026-08-27 at 17.35.48 (14).jpeg","WhatsApp Image 2026-08-27 at 17.35.48 (15).jpeg","WhatsApp Image 2026-08-27 at 17.35.48 (16).jpeg","WhatsApp Image 2026-08-27 at 17.35.48 (2).jpeg","WhatsApp Image 2026-08-27 at 17.35.48 (3).jpeg","WhatsApp Image 2026-08-27 at 17.35.48 (4).jpeg","WhatsApp Image 2026-08-27 at 17.35.48 (5).jpeg","WhatsApp Image 2026-08-27 at 17.35.48 (6).jpeg","WhatsApp Image 2026-08-27 at 17.35.48 (7).jpeg","WhatsApp Image 2026-08-27 at 17.35.48 (8).jpeg","WhatsApp Image 2026-08-27 at 17.35.48 (9).jpeg","WhatsApp Image 2026-08-27 at 17.35.48.jpeg","WhatsApp Image 2026-08-27 at 17.36.10 (1).jpeg","WhatsApp Image 2026-08-27 at 17.36.10.jpeg","WhatsApp Image 2026-08-27 at 17.36.11.jpeg","WhatsApp Image 2026-08-27 at 17.38.36 (1).jpeg","WhatsApp Image 2026-08-27 at 17.38.36 (2).jpeg","WhatsApp Image 2026-08-27 at 17.38.36 (3).jpeg","WhatsApp Image 2026-08-27 at 17.38.36 (4).jpeg","WhatsApp Image 2026-08-27 at 17.38.36 (5).jpeg","WhatsApp Image 2026-08-27 at 17.38.36 (6).jpeg","WhatsApp Image 2026-08-27 at 17.38.36 (7).jpeg","WhatsApp Image 2026-08-27 at 17.38.36.jpeg","WhatsApp Image 2026-08-27 at 17.42.22 (1).jpeg","WhatsApp Image 2026-08-27 at 17.42.22 (2).jpeg","WhatsApp Image 2026-08-27 at 17.42.22 (3).jpeg","WhatsApp Image 2026-08-27 at 17.42.22 (4).jpeg","WhatsApp Image 2026-08-27 at 17.42.22 (5).jpeg","WhatsApp Image 2026-08-27 at 17.42.22.jpeg","WhatsApp Image 2026-08-27 at 17.42.23 (1).jpeg","WhatsApp Image 2026-08-27 at 17.42.23 (10).jpeg","WhatsApp Image 2026-08-27 at 17.42.23 (11).jpeg","WhatsApp Image 2026-08-27 at 17.42.23 (12).jpeg","WhatsApp Image 2026-08-27 at 17.42.23 (13).jpeg","WhatsApp Image 2026-08-27 at 17.42.23 (14).jpeg","WhatsApp Image 2026-08-27 at 17.42.23 (15).jpeg","WhatsApp Image 2026-08-27 at 17.42.23 (16).jpeg","WhatsApp Image 2026-08-27 at 17.42.23 (17).jpeg","WhatsApp Image 2026-08-27 at 17.42.23 (18).jpeg","WhatsApp Image 2026-08-27 at 17.42.23 (19).jpeg","WhatsApp Image 2026-08-27 at 17.42.23 (2).jpeg","WhatsApp Image 2026-08-27 at 17.42.23 (20).jpeg","WhatsApp Image 2026-08-27 at 17.42.23 (21).jpeg","WhatsApp Image 2026-08-27 at 17.42.23 (22).jpeg","WhatsApp Image 2026-08-27 at 17.42.23 (3).jpeg","WhatsApp Image 2026-08-27 at 17.42.23 (4).jpeg","WhatsApp Image 2026-08-27 at 17.42.23 (5).jpeg","WhatsApp Image 2026-08-27 at 17.42.23 (6).jpeg","WhatsApp Image 2026-08-27 at 17.42.23 (7).jpeg","WhatsApp Image 2026-08-27 at 17.42.23 (8).jpeg","WhatsApp Image 2026-08-27 at 17.42.23 (9).jpeg","WhatsApp Image 2026-08-27 at 17.42.23.jpeg"
+    ].map(file => "products/" + file);
+
+    const grid=document.getElementById("grid"),lightbox=document.getElementById("lightbox"),largeImage=document.getElementById("largeImage"),enquire=document.getElementById("enquire"),topButton=document.getElementById("topButton");
+    let current=0;
+    imageFiles.forEach((src,index)=>{const card=document.createElement("button");card.className="card";card.type="button";card.setAttribute("aria-label","Open catalogue image "+(index+1));const img=document.createElement("img");img.src=src;img.alt="Youniverse catalogue image";img.loading="lazy";card.appendChild(img);card.onclick=()=>open(index);grid.appendChild(card)});
+    function update(){largeImage.src=imageFiles[current];enquire.href="https://wa.me/919967111111?text="+encodeURIComponent("Hi Youniverse, I am interested in catalogue image "+(current+1)+". Please share the price, sizes available and lead time.")}
+    function open(index){current=index;update();lightbox.classList.add("active");lightbox.setAttribute("aria-hidden","false");document.body.style.overflow="hidden"}
+    function close(){lightbox.classList.remove("active");lightbox.setAttribute("aria-hidden","true");document.body.style.overflow=""}
+    function prev(){current=(current-1+imageFiles.length)%imageFiles.length;update()}
+    function next(){current=(current+1)%imageFiles.length;update()}
+    document.getElementById("close").onclick=close;document.getElementById("prev").onclick=prev;document.getElementById("next").onclick=next;lightbox.onclick=e=>{if(e.target===lightbox)close()};document.addEventListener("keydown",e=>{if(!lightbox.classList.contains("active"))return;if(e.key==="Escape")close();if(e.key==="ArrowLeft")prev();if(e.key==="ArrowRight")next()});window.addEventListener("scroll",()=>topButton.classList.toggle("visible",scrollY>350));topButton.onclick=()=>scrollTo({top:0,behavior:"smooth"});
+  </script>
+</body>
+</html>
