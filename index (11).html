@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Youniverse — Hand-Painted Women's Wear | Dadar, Mumbai</title>
+<meta name="description" content="Youniverse — hand-painted shirts and patchwork denim, designed and made in Mumbai. Family-run since 2015. Pan-India, wholesale and custom orders.">
+<meta name="theme-color" content="#f7f1e4">
+<meta property="og:title" content="Youniverse — Hand-Painted Women's Western Wear, Dadar Mumbai">
+<meta property="og:description" content="In-house made, hand-painted shirts and patchwork denim. Family-run since 2015.">
+<meta property="og:image" content="logo.png">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Instrument+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#201a13; --ink-soft:#4a4032;
+    --cream:#f7f1e4; --cream-2:#efe4cd; --paper:#fffbf2;
+    --terracotta:#bf5122; --terracotta-dark:#9a3f19;
+    --ochre:#c1892c; --sage:#59654a; --rose:#c97a6d;
+    --pop-red:#c23a2a; --pop-blue:#2f6fa0;
+    --line:rgba(32,26,19,.16); --line-strong:rgba(32,26,19,.32);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{background:var(--cream);color:var(--ink);}
+  body{font-family:'Instrument Sans',sans-serif;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;}
+  ul{list-style:none;}
+  :focus-visible{outline:2px solid var(--terracotta);outline-offset:3px;}
+  .wrap{width:min(1220px,92%);margin:0 auto;}
+  .eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--terracotta-dark);margin-bottom:14px;}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;color:var(--ink);}
+  h2{font-size:clamp(2.1rem,4.6vw,3.4rem);line-height:1.08;letter-spacing:-.01em;}
+  h3{font-size:1.3rem;line-height:1.2;}
+  .tag{display:inline-flex;align-items:center;gap:6px;background:var(--paper);border:1px solid var(--ink);padding:7px 14px 7px 20px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;position:relative;color:var(--ink);}
+  .tag::before{content:"";position:absolute;left:8px;top:50%;transform:translateY(-50%);width:5px;height:5px;border-radius:50%;background:var(--cream);border:1px solid var(--ink);}
+  .tag.new{background:var(--pop-red);border-color:var(--pop-red);color:#fff;}
+  .tag.new::before{background:#fff;border-color:var(--pop-red);}
+  .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--ink);padding:14px 24px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:transparent;color:var(--ink);transition:background .3s ease,color .3s ease,transform .3s ease;cursor:pointer;}
+  .btn:hover{background:var(--ink);color:var(--cream);transform:translateY(-2px);}
+  .btn.fill{background:var(--terracotta);border-color:var(--terracotta);color:#fff;}
+  .btn.fill:hover{background:var(--terracotta-dark);border-color:var(--terracotta-dark);}
+  section{padding:100px 0;position:relative;}
+  .tight{padding:64px 0;}
+  .soft{background:var(--cream-2);}
+  .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:44px;flex-wrap:wrap;}
+  .section-head p{max-width:420px;color:var(--ink-soft);}
+
+  header{position:fixed;top:0;left:0;right:0;z-index:90;background:rgba(247,241,228,0);border-bottom:1px solid transparent;transition:background .3s ease,border-color .3s ease;}
+  header.scrolled{background:rgba(247,241,228,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:16px 4vw;}
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand img{height:34px;width:auto;}
+  .brand span{font-family:'Fraunces',serif;font-weight:600;font-size:15px;letter-spacing:.28em;}
+  .nav-links{display:flex;align-items:center;gap:28px;}
+  .nav-links a{
+  font-family:'Space Mono',monospace;
+  font-size:10.5px;
+  font-weight:700;
+  color:#111111;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  position:relative;
+  padding-bottom:3px;
+}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--terracotta);transition:width .3s ease;}
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{border:1px solid var(--ink);padding:9px 16px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;transition:background .25s ease,color .25s ease;}
+  .nav-cta:hover{background:var(--ink);color:var(--cream);}
+  .nav-toggle{display:none;background:none;border:1px solid var(--ink);padding:8px 10px;font-size:16px;cursor:pointer;}
+
+  .hero{min-height:96vh;display:grid;place-items:center;padding:150px 0 80px;text-align:center;position:relative;overflow:hidden;}
+  .hero-media{position:absolute;inset:0;}
+  .hero-media img{width:100%;height:100%;object-fit:cover;object-position:50% 14%;filter:contrast(1.03) brightness(.82) saturate(1.03);transform:scale(1.04);opacity:0;animation:hero-in 1.4s ease forwards;}
+  @keyframes hero-in{from{opacity:0;transform:scale(1.08);}to{opacity:1;transform:scale(1.04);}}
+  .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(32,26,19,.35) 0%,rgba(32,26,19,.28) 40%,rgba(32,26,19,.72) 100%);}
+  .hero-content{position:relative;z-index:2;color:#fff;}
+  .hero .eyebrow{color:var(--ochre);}
+  .hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2.6rem,11.5vw,6.6rem);line-height:.95;white-space:nowrap;color:#fff;}
+  .hero-sub{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:clamp(1.05rem,2.2vw,1.55rem);margin:20px 0 28px;color:var(--cream);}
+  .hero-copy{max-width:480px;margin:0 auto 30px;color:var(--cream-2);font-size:.96rem;}
+  .hero-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+
+  .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0;overflow:hidden;white-space:nowrap;}
+  .marquee-track{display:inline-flex;gap:40px;animation:scroll-left 32s linear infinite;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--terracotta-dark);}
+  .marquee-track span{white-space:nowrap;}
+  @keyframes scroll-left{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);}
+  .reveal.show{opacity:1;transform:none;}
+  .reveal.delay-1{transition-delay:.08s;}
+  .reveal.delay-2{transition-delay:.16s;}
+  .reveal.delay-3{transition-delay:.24s;}
+
+  /* ---- MASONRY (no cropping, ever) ---- */
+  .masonry{column-count:1;column-gap:22px;}
+  @media(min-width:640px){.masonry{column-count:2;}}
+  @media(min-width:1000px){.masonry{column-count:3;}}
+  @media(min-width:1300px){.masonry{column-count:4;}}
+  .look-card{break-inside:avoid;margin-bottom:22px;background:var(--paper);border:1px solid var(--line);overflow:hidden;}
+  .look-media{position:relative;overflow:hidden;}
+  .look-media img{width:100%;height:auto;display:block;transition:transform .6s cubic-bezier(.2,.7,.2,1);}
+  .look-card:hover .look-media img{transform:scale(1.035);}
+  .look-badge{position:absolute;top:12px;left:12px;}
+  .look-body{padding:16px 18px 20px;}
+  .look-body .tag{margin-bottom:10px;transform:rotate(-1.4deg);}
+  .look-card:nth-child(3n) .look-body .tag{transform:rotate(1.1deg);}
+  .look-body p{color:var(--ink-soft);font-size:.92rem;}
+
+  .trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);}
+  .trust-item{background:var(--cream);padding:30px 26px;}
+  .trust-item h3{font-size:1.1rem;margin-bottom:8px;}
+  .trust-item p{color:var(--ink-soft);font-size:.92rem;}
+
+  /* ---- STORY TIMELINE ---- */
+  .about{position:relative;overflow:hidden;}
+  .about-mark{position:absolute;top:50%;right:-8%;width:640px;max-width:60vw;transform:translateY(-50%);opacity:.07;pointer-events:none;}
+  .about-copy{max-width:640px;position:relative;z-index:2;}
+  .about-copy p{color:var(--ink-soft);margin:16px 0;}
+  .about-copy strong{color:var(--ink);}
+  blockquote.pull{border-left:3px solid var(--terracotta);padding:4px 0 4px 22px;margin:30px 0;font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:clamp(1.1rem,2vw,1.4rem);line-height:1.4;color:var(--ink);}
+  blockquote.pull cite{display:block;margin-top:12px;font-family:'Space Mono',monospace;font-style:normal;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--terracotta-dark);}
+
+  .timeline{position:relative;margin-top:60px;padding-left:2px;}
+  .timeline::before{content:"";position:absolute;left:11px;top:6px;bottom:6px;width:1px;background:var(--line-strong);transform-origin:top;transform:scaleY(0);transition:transform 1.1s cubic-bezier(.2,.7,.2,1);}
+  .timeline.show::before{transform:scaleY(1);}
+  .tl-item{position:relative;padding:0 0 40px 42px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{content:"";position:absolute;left:5px;top:4px;width:13px;height:13px;border-radius:50%;background:var(--cream);border:2px solid var(--terracotta);}
+  .tl-year{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--terracotta-dark);margin-bottom:6px;}
+  .tl-item h3{font-size:1.15rem;margin-bottom:6px;}
+  .tl-item p{color:var(--ink-soft);font-size:.94rem;max-width:480px;}
+
+  .trade-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  .trade-card{background:var(--paper);border:1px solid var(--line);padding:36px 32px;display:flex;flex-direction:column;}
+  .trade-card .tag{align-self:flex-start;margin-bottom:18px;transform:rotate(-2deg);}
+  .trade-card p{color:var(--ink-soft);margin:14px 0 22px;flex-grow:1;}
+
+  /* ---- OFFICE / SHOWROOM ---- */
+  .office-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;}
+  .office-copy p{color:var(--ink-soft);margin:14px 0;}
+  .office-gallery{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .office-photo{border:1px solid var(--line);overflow:hidden;background:var(--cream-2);}
+  .office-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.7,.2,1);}
+  .office-photo:hover img{transform:scale(1.04);}
+  .office-photo.tall{grid-row:span 2;}
+  .office-photo.tall img{aspect-ratio:950/1280;}
+  .office-photo.wide img{aspect-ratio:16/9;}
+
+  .journal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;}
+  .post{background:var(--paper);border:1px solid var(--line);}
+  .post-media{width:100%;background:var(--cream-2);}
+  .post-media img{width:100%;height:auto;display:block;}
+  .post-body{padding:22px 24px 26px;}
+  .post-body .eyebrow{margin-bottom:8px;}
+  .post-body h3{margin-bottom:10px;}
+  .post-body p.excerpt{color:var(--ink-soft);font-size:.94rem;margin-bottom:14px;}
+  details summary{cursor:pointer;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--terracotta-dark);list-style:none;}
+  details summary::-webkit-details-marker{display:none;}
+  details summary::after{content:" +";}
+  details[open] summary::after{content:" –";}
+  details .full-text{margin-top:14px;color:var(--ink-soft);font-size:.94rem;white-space:pre-line;}
+
+  .reviews .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .quote{background:var(--paper);border:1px solid var(--line);padding:26px;}
+  .quote .stars{color:var(--ochre);letter-spacing:.15em;margin-bottom:12px;}
+  .quote p{font-family:'Fraunces',serif;font-style:italic;font-size:1.05rem;line-height:1.4;}
+  .quote .who{margin-top:14px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);}
+
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:stretch;}
+  .visit-copy p{margin:14px 0;color:var(--ink-soft);}
+  .visit-copy strong{color:var(--ink);}
+  .map{border:1px solid var(--line);overflow:hidden;min-height:340px;}
+  .map iframe{width:100%;height:100%;min-height:340px;border:0;filter:grayscale(.15) contrast(1.02);}
+
+  footer{background:var(--ink);color:var(--cream);padding:64px 0 30px;}
+  .footer-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:40px;}
+  .footer-brand{display:flex;align-items:center;gap:12px;}
+  .footer-brand img{height:38px;width:auto;filter:brightness(0) invert(1) opacity(.9);}
+  .footer-brand span{font-family:'Fraunces',serif;font-weight:600;font-size:16px;letter-spacing:.28em;}
+  .footer-tag{font-family:'Fraunces',serif;font-style:italic;color:var(--cream-2);margin-top:10px;max-width:280px;}
+  .footer-links{display:flex;gap:60px;flex-wrap:wrap;}
+  .footer-col .eyebrow{color:var(--ochre);}
+  .footer-col a,.footer-col p{display:block;font-size:.88rem;color:var(--cream-2);margin-bottom:8px;}
+  .footer-col a:hover{color:#fff;}
+  .footer-bottom{border-top:1px solid rgba(247,241,228,.15);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.8rem;color:rgba(247,241,228,.6);}
+
+  @media(max-width:860px){
+    .nav-links{position:fixed;top:66px;left:0;right:0;background:var(--cream);border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;padding:20px 6vw 26px;gap:18px;transform:translateY(-130%);transition:transform .35s ease;}
+    .nav-links.open{transform:translateY(0);}
+    .nav-toggle{display:block;}
+    .nav-cta{display:none;}
+    .trade-grid{grid-template-columns:1fr;}
+    .reviews .quotes{grid-template-columns:1fr;}
+    .visit-grid{grid-template-columns:1fr;}
+    .office-grid{grid-template-columns:1fr;}
+    .footer-top{flex-direction:column;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important;}
+  }
+</style>
+</head>
+<body>
+<header id="header">
+  <nav>
+    <a class="brand" href="#top">
+      <img src="owl-mark.png" alt="Youniverse owl mark">
+      <span>YOUNIVERSE</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#lookbook">Lookbook</a></li>
+      <li><a href="#new">New In</a></li>
+      <li><a href="catalogue.html">Catalogue</a></li>
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#office">Showroom</a></li>
+      <li><a href="#trade">Wholesale</a></li>
+      <li><a href="#journal">Journal</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <a class="nav-cta" href="https://wa.me/919967111111?text=Hi%20Youniverse" target="_blank" rel="noopener">WhatsApp Us</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+  </nav>
+</header>
+
+<div id="top"></div>
+
+<main>
+<section class="hero">
+  <div class="hero-media"><img src="hero.jpeg" alt="Three models in hand-painted Youniverse shirts and patchwork wide-leg jeans"></div>
+  <div class="hero-content wrap">
+    <p class="eyebrow">Est. 2015 · Dadar West, Mumbai</p>
+    <h1>YOUNIVERSE</h1>
+    <p class="hero-sub">Inspired. Original. Unbound.</p>
+    <p class="hero-copy">Hand-painted shirts and patchwork denim, designed and made in-house — one Dadar workshop, one brushstroke at a time.</p>
+    <div class="hero-actions">
+      <a href="catalogue.html" class="btn fill">View Catalogue</a>
+      <a class="btn" style="color:#fff;border-color:#fff" href="https://wa.me/919967111111?text=Hi%20Youniverse" target="_blank" rel="noopener">Message on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>HAND-PAINTED IN MUMBAI &nbsp;·&nbsp; IN-HOUSE MANUFACTURED &nbsp;·&nbsp; PAN-INDIA STOCKISTS &nbsp;·&nbsp; WHOLESALE &amp; RETAIL &nbsp;·&nbsp; EST. 2015 &nbsp;·&nbsp; DADAR WEST, MUMBAI &nbsp;·&nbsp;</span>
+    <span>HAND-PAINTED IN MUMBAI &nbsp;·&nbsp; IN-HOUSE MANUFACTURED &nbsp;·&nbsp; PAN-INDIA STOCKISTS &nbsp;·&nbsp; WHOLESALE &amp; RETAIL &nbsp;·&nbsp; EST. 2015 &nbsp;·&nbsp; DADAR WEST, MUMBAI &nbsp;·&nbsp;</span>
+  </div>
+</div>
+
+<section id="lookbook">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><p class="eyebrow">The Lookbook</p><h2>Ten prints, one philosophy.</h2></div>
+      <p>Every print is painted by hand before it's ever cut — paint first, pattern second.</p>
+    </div>
+    <div class="masonry" id="lookbookGrid"></div>
+  </div>
+</section>
+
+<section id="new" class="soft">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><p class="eyebrow">Just In</p><h2>New arrivals.</h2></div>
+      <p>The latest prints off the workbench.</p>
+    </div>
+    <div class="masonry" id="newGrid"></div>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap">
+    <div class="trust-grid reveal">
+      <div class="trust-item"><h3>In-house, start to finish</h3><p>Designed, hand-painted, cut and stitched under one roof in Dadar.</p></div>
+      <div class="trust-item"><h3>Now pan-India</h3><p>Stocked with retailers across the country, from a single Dadar shop.</p></div>
+      <div class="trust-item"><h3>Wholesale-ready</h3><p>Bulk and trade orders fulfilled for boutiques and retailers.</p></div>
+      <div class="trust-item"><h3>Made to order</h3><p>Special sizes and custom print runs, made on request.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="story" class="about">
+  <img class="about-mark reveal" src="owl-mark.png" alt="">
+  <div class="wrap">
+    <div class="about-copy reveal">
+      <p class="eyebrow">Our Story</p>
+      <h2>Two brothers, one Youniverse.</h2>
+      <p>Mahesh Nishar and Amit Nishar didn't start with a factory — they started with a single retail clothing shop in Kalyan. It did well enough to become three, spread across Thane and Kalyan, each one run the same hands-on way.</p>
+      <p>In 2015, the brothers took the leap from selling clothes to making them — a small manufacturing unit in Vikhroli, and the first stitches of what would become <strong>Youniverse</strong>.</p>
+      <blockquote class="pull">
+        "We started small, kept learning, and kept making. The space is bigger now, but the hands-on way we work remains the same."
+        <cite>Mahesh &amp; Amit Nishar, Founders</cite>
+      </blockquote>
+      <p>From Diwali 2025, Youniverse moved production into a new, larger space in Dadar West — the next chapter for a family business built on fabric, fit and original expression.</p>
+    </div>
+
+    <div class="timeline reveal" id="timeline">
+      <div class="tl-item"><p class="tl-year">The Beginning</p><h3>A single shop in Kalyan</h3><p>Mahesh and Amit start out in retail — one small clothing shop, learning the trade first-hand.</p></div>
+      <div class="tl-item"><p class="tl-year">Growth</p><h3>Three shops, Thane &amp; Kalyan</h3><p>The Kalyan shop grows into three retail stores across Thane and Kalyan.</p></div>
+      <div class="tl-item"><p class="tl-year">2015</p><h3>Manufacturing begins in Vikhroli</h3><p>The brothers start their own clothing manufacturing in a small unit in Vikhroli — Youniverse, as a brand, is born.</p></div>
+      <div class="tl-item"><p class="tl-year">Diwali 2025</p><h3>A new home in Dadar West</h3><p>Youniverse moves into a bigger, dedicated manufacturing space in Dadar — the current home of the brand.</p></div>
+      <div class="tl-item"><p class="tl-year">What's Next</p><h3>Pan-India, then the world</h3><p>Stocked with retailers across India today; Mahesh and Amit are working to take Youniverse beyond it.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="office" class="soft">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><p class="eyebrow">Trade Visits</p><h2>See the collection in person.</h2></div>
+    </div>
+    <div class="office-grid reveal">
+      <div class="office-copy">
+        <p>Our Dadar office doubles as a showroom. Every article we make — every print, every fit, every colourway — is laid out for retailers to see and feel before they order.</p>
+        <p>If you're a retailer or boutique owner, you're welcome to walk in and go through the full collection in person, no appointment required during business hours.</p>
+        <a class="btn fill" href="https://wa.me/919967111111?text=Hi%20Youniverse%2C%20I%27d%20like%20to%20schedule%20a%20visit%20to%20your%20Dadar%20showroom." target="_blank" rel="noopener" style="margin-top:10px;">Schedule a Visit</a>
+      </div>
+      <div class="office-gallery">
+        <div class="office-photo tall"><img src="office-02.jpeg" alt="Youniverse storefront signage in Dadar West, Mumbai" loading="lazy"></div>
+        <div class="office-photo wide"><img src="office-01.jpeg" alt="Inside the Youniverse showroom, with racks of stock and a seating area" loading="lazy"></div>
+        <div class="office-photo wide"><img src="office-03.jpeg" alt="Youniverse window display with styled mannequins" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="trade">
+  <div class="wrap">
+    <div class="section-head reveal"><div><p class="eyebrow">Trade &amp; Custom Orders</p><h2>We stitch for retailers, and for you.</h2></div></div>
+    <div class="trade-grid">
+      <article class="trade-card reveal">
+        <span class="tag">Wholesale / B2B</span>
+        <h3>Stock Youniverse in your store</h3>
+        <p>Youniverse supplies boutiques and retailers across India on a wholesale basis. Get in touch and we'll walk you through minimums, pricing and lead times.</p>
+        <a class="btn fill" href="https://wa.me/919967111111?text=Hi%20Youniverse%2C%20I%27m%20interested%20in%20stocking%20your%20collection%20wholesale." target="_blank" rel="noopener">Enquire on WhatsApp</a>
+      </article>
+      <article class="trade-card reveal delay-1">
+        <span class="tag">Special Requests</span>
+        <h3>Custom sizes &amp; one-off runs</h3>
+        <p>Want a print in a different colourway, a size we don't stock, or a one-off run for an event? We take custom and special orders directly from customers too.</p>
+        <a class="btn" href="https://wa.me/919967111111?text=Hi%20Youniverse%2C%20I%27d%20like%20to%20ask%20about%20a%20custom%20order." target="_blank" rel="noopener">Send a Custom Request</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="journal" class="soft">
+  <div class="wrap">
+    <div class="section-head reveal"><div><p class="eyebrow">The Journal</p><h2>Stories from the shop floor.</h2></div><p>Notes on how the clothes actually get made, from the Dadar workshop.</p></div>
+    <div class="journal-grid">
+      <article class="post reveal">
+        <div class="post-media"><img src="jeans-01.jpeg" alt="Hand-painted Warli print shirt detail" loading="lazy"></div>
+        <div class="post-body">
+          <p class="eyebrow">Craft</p><h3>Why We Still Hand-Paint Every Shirt</h3>
+          <p class="excerpt">No two Youniverse shirts are ever quite the same — and that's on purpose.</p>
+          <details><summary>Read the story</summary><div class="full-text">Every Youniverse print starts as a brush, not a machine. Before a shirt is cut, the fabric is laid flat across a workbench in our Dadar workshop and painted panel by panel — a butterfly here, a Warli dancer there, a line-drawn face on a sleeve. It's slower than screen printing, and it means every batch has small, honest variations.
+
+We've kept it this way since 2015 because it's the whole point of the label. A machine print looks the same on the thousandth shirt as it did on the first. A hand-painted one doesn't — and that's what makes it feel like it belongs to the person wearing it.
+
+So if your Youniverse shirt looks a little different from the one in the shop photo, that's not a defect. That's the brushstroke.</div></details>
+        </div>
+      </article>
+      <article class="post reveal delay-1">
+        <div class="post-media"><img src="jeans-02.jpeg" alt="Patchwork wide-leg denim detail" loading="lazy"></div>
+        <div class="post-body">
+          <p class="eyebrow">Process</p><h3>Wide-Leg, Zero Off-Cuts</h3>
+          <p class="excerpt">Our patchwork denim isn't a trend print — it's what's left over from everything else we cut.</p>
+          <details><summary>Read the story</summary><div class="full-text">Every Youniverse patchwork jean starts as offcuts — leftover denim sorted by wash and weight, then pieced back together into a single wide leg before it's painted or embroidered.
+
+It's more work than cutting a pair from a single bolt — every panel has to be matched and seamed by hand — but very little denim leaves our workshop as waste. The Warli panels and portrait prints you see on our jeans aren't hiding the patchwork; they're painted straight onto it.
+
+We'd rather piece it together than throw it out.</div></details>
+        </div>
+      </article>
+      <article class="post reveal delay-2">
+        <div class="post-media"><img src="shirt-04.jpeg" alt="Celestial print co-ord set detail" loading="lazy"></div>
+        <div class="post-body">
+          <p class="eyebrow">Future</p><h3>From Dadar to the World</h3>
+          <p class="excerpt">Pan-India was the first chapter. Mahesh and Amit Nishar on what comes after.</p>
+          <details><summary>Read the story</summary><div class="full-text">Youniverse grew from a single Kalyan shop into a pan-India label because retailers kept finding the work — first three shops, then a manufacturing unit in Vikhroli in 2015, and now a bigger home in Dadar since Diwali 2025.
+
+"Every market we've entered so far has been because a retailer found us, not the other way around," says Amit. "The next step is doing that on purpose — outside India." Mahesh adds that the plan isn't to change what Youniverse is to get there: the hand-painting, the in-house cutting, the custom orders — that's the part that travels best.
+
+For now, that means growing the wholesale side and slowly introducing the label to retailers beyond India, while keeping every piece painted and stitched in the same workshop it always has been.</div></details>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="wrap">
+    <div class="section-head reveal"><div><p class="eyebrow">Kind Words</p><h2>What our customers say.</h2></div></div>
+    <div class="quotes">
+      <blockquote class="quote reveal"><div class="stars">★★★★★</div><p>"Nice collection, beautiful shirts — you'll fall in love with the fitting and fabric quality."</p><div class="who">— Priyanka S.</div></blockquote>
+      <blockquote class="quote reveal delay-1"><div class="stars">★★★★★</div><p>"Really impressed with the shirt quality. Stylish workwear and casuals at reasonable prices."</p><div class="who">— Ananya M.</div></blockquote>
+      <blockquote class="quote reveal delay-2"><div class="stars">★★★★★</div><p>"A well-known brand in Dadar with a lovely western collection. Highly recommend visiting!"</p><div class="who">— Ritu K.</div></blockquote>
+    </div>
+  </div>
+</section>
+
+<section id="visit" class="soft">
+  <div class="wrap visit-grid">
+    <div class="visit-copy reveal">
+      <p class="eyebrow">Come Say Hi</p><h2>Visit our store.</h2>
+      <p><strong>Youniverse</strong><br>Shop No. 09, Ram Shyam Krupa CHS,<br>Garage Galli, near Atlantic Plaza, near Om Gopal,<br>Dadar West, Mumbai, Maharashtra 400028</p>
+      <p><strong>Hours:</strong> Mon–Sat, 10:30 AM – 8:30 PM</p>
+      <p><strong>WhatsApp:</strong> +91 99671 11111</p>
+      <a class="btn fill" href="https://wa.me/919967111111?text=Hi%20Youniverse" target="_blank" rel="noopener" style="margin-top:10px;">Message us on WhatsApp</a>
+    </div>
+    <div class="map reveal delay-1">
+      <iframe src="https://maps.google.com/maps?q=Youniverse%20Garments%20Garage%20Galli%20Dadar%20West%20Mumbai&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" title="Youniverse location map"></iframe>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand"><img src="owl-mark.png" alt=""><span>YOUNIVERSE</span></div>
+        <p class="footer-tag">Inspired. Original. Unbound.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col"><p class="eyebrow">Explore</p><a href="#lookbook">Lookbook</a><a href="#story">Our Story</a><a href="#office">Showroom</a><a href="#journal">Journal</a><a href="#visit">Visit</a></div>
+        <div class="footer-col"><p class="eyebrow">Trade</p><a href="#trade">Wholesale &amp; B2B</a><a href="https://wa.me/919967111111?text=Hi%20Youniverse%2C%20I%27d%20like%20to%20ask%20about%20a%20custom%20order." target="_blank" rel="noopener">Custom Orders</a></div>
+        <div class="footer-col"><p class="eyebrow">Follow</p><a href="https://www.instagram.com/youniversegarments/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/youniversegarments/" target="_blank" rel="noopener">Facebook</a><a href="https://wa.me/919967111111?text=Hi%20Youniverse" target="_blank" rel="noopener">WhatsApp</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Youniverse · Founded by Mahesh &amp; Amit Nishar · Dadar West, Mumbai</span>
+      <span>All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var lookbook = [
+    ['campaign.jpeg','Suzani Patchwork','Heritage suzani florals, patched by hand, ridden in on a vintage cycle.'],
+    ['jeans-01.jpeg','Warli Tribal','Village folk art painted panel by panel onto patchwork denim.'],
+    ['shirt-04.jpeg','Spiritual Gangster','Celestial hand-paint on undyed linen — moons, suns, and a little attitude.'],
+    ['co-ord.jpeg','Warrior Co-ord','Matching separates printed with folklore figures, finished in linen.'],
+    ['shirt-03.jpeg','Butterfly Meadow','Neon linen scattered with hand-painted butterflies and wildflowers.'],
+    ['jeans-04.jpeg','Scooter Stripe','Striped shirting doodled with scooters and small, happy details.'],
+    ['shirt-01.jpeg','Portrait Pop','Line-drawn busts on breezy linen, worn easy with wide denim.'],
+    ['jeans-03.jpeg','Face Value','Portrait florals in terracotta and teal, paired with acid-wash denim.'],
+    ['shirt-02.jpeg','Comic Strip','Candy stripes doodled with cartoons and hand-lettered one-liners.'],
+    ['jeans-02.jpeg','Folk Panel','The same Warli storytelling, cut wide and finished with a silver belt.'],
+    ['shirt cover.jpeg','Street Edit','Colour-block linen and tribal panels, styled off-duty.']
+  ];
+  var newArrivals = [
+    ['new-02.jpeg','Joe Cool Stripe — Walking','Snoopy-doodled stripes, worn easy with ripped wide-leg denim.'],
+    ['new-04.jpeg','Joe Cool Stripe — Portrait','The same playful print, front and centre.'],
+    ['new-01.jpeg','Joe Cool Stripe — Studio','Hand-lettered pocket detail on soft pink stripe.'],
+    ['new-03.jpeg','Joe Cool Stripe — Close','A closer look at the cartoon linework.'],
+    ['new-06.jpeg','Scooter Ride — Close','"Life is short, ride." Hand-painted scooter scene on sage stripe.'],
+    ['new-05.jpeg','Scooter Ride — Seated','The scooter print, styled with a vintage concho belt.'],
+    ['new-08.jpeg','Sunshine Stripe — Portrait','"Be happy" doodles and patch-style graphics on butter-yellow stripe.'],
+    ['new-07.jpeg','Sunshine Stripe — Studio','The full look, styled with turquoise layers.']
+  ];
+  function renderGrid(id, items, isNew){
+    var html = items.map(function(c){
+      return '<article class="look-card reveal">'
+        + '<div class="look-media">'
+        + (isNew ? '<span class="tag new look-badge">New</span>' : '')
+        + '<img src="'+c[0]+'" alt="Youniverse '+c[1]+'" loading="lazy">'
+        + '</div>'
+        + '<div class="look-body"><span class="tag">'+c[1]+'</span><p>'+c[2]+'</p></div>'
+        + '</article>';
+    }).join('');
+    document.getElementById(id).innerHTML = html;
+  }
+  renderGrid('lookbookGrid', lookbook, false);
+  renderGrid('newGrid', newArrivals, true);
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  var header = document.getElementById('header');
+  window.addEventListener('scroll', function(){
+    header.classList.toggle('scrolled', window.scrollY > 30);
+  }, {passive:true});
+
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', function(){
+    var open = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  navLinks.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ navLinks.classList.remove('open'); });
+  });
+
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('show'); });
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('show'); });
+  }
+</script>
+</body>
+</html>

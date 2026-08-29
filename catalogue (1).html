@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Youniverse Clothing — full catalogue. Original western wear designed in Dadar, Mumbai. Retail, wholesale and custom orders, size XS to 3XL.">
+<title>Catalogue — Youniverse Clothing</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700&family=Instrument+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#201a13; --ink-soft:#4a4032;
+    --cream:#f7f1e4; --cream-2:#efe4cd; --paper:#fffbf2;
+    --terracotta:#bf5122; --terracotta-dark:#9a3f19;
+    --line:rgba(32,26,19,.16); --line-strong:rgba(32,26,19,.32);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--cream);color:var(--ink);font-family:'Instrument Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;}
+  button{font:inherit;}
+  img{display:block;max-width:100%;}
+  :focus-visible{outline:2px solid var(--terracotta);outline-offset:3px;}
+  .wrap{width:min(1320px,94%);margin:0 auto;}
+
+  header{position:sticky;top:0;z-index:30;background:rgba(247,241,228,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .header-inner{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:10px 0;}
+  .brand{font-family:'Fraunces',serif;font-weight:700;font-size:16px;letter-spacing:.26em;text-transform:uppercase;}
+  .brand:hover{opacity:.7;}
+  .header-actions{display:flex;align-items:center;gap:14px;}
+  .wa-link{border:1px solid var(--ink);padding:9px 16px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;transition:background .25s ease,color .25s ease;}
+  .wa-link:hover{background:var(--ink);color:var(--cream);}
+
+  .page-head{padding:40px 0 26px;text-align:center;}
+  .page-head .eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--terracotta-dark);margin-bottom:10px;}
+  .page-head h1{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(2rem,5vw,3.1rem);}
+  .page-head p{margin-top:10px;color:var(--ink-soft);font-size:.95rem;}
+
+  /* ---- FILTER CHIPS ---- */
+  .filters{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;padding:0 0 34px;}
+  .chip{
+    border:1px solid var(--line-strong);
+    background:var(--paper);
+    padding:11px 20px;
+    font-family:'Space Mono',monospace;
+    font-size:11px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    cursor:pointer;
+    border-radius:100px;
+    transition:background .2s ease,color .2s ease,border-color .2s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--cream);}
+  .count{opacity:.65;padding:0 0 34px;text-align:center;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-top:-18px;}
+
+  /* ---- NATURAL-RATIO GRID (JS row-span, never crops) ---- */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+    grid-auto-rows:4px;
+    gap:16px;
+    padding-bottom:70px;
+  }
+  @media(min-width:640px){.grid{grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:20px;}}
+  @media(min-width:1100px){.grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));}}
+
+  .card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    overflow:hidden;
+    cursor:pointer;
+    display:flex;
+    flex-direction:column;
+  }
+  .card.hidden{display:none;}
+  .card.feature{grid-column:span 1;}
+  @media(min-width:640px){ .card.feature{grid-column:span 2;} }
+  .card-media{width:100%;background:var(--cream-2);}
+  .card-media img{width:100%;height:auto;display:block;transition:transform .5s ease;}
+  .card:hover .card-media img{transform:scale(1.02);}
+  .card-body{padding:12px 14px 15px;flex-grow:1;display:flex;flex-direction:column;gap:4px;}
+  .card-cat{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--terracotta-dark);}
+  .card-name{font-family:'Fraunces',serif;font-weight:600;font-size:.95rem;line-height:1.25;}
+  .card-code{font-family:'Space Mono',monospace;font-size:9.5px;color:var(--ink-soft);letter-spacing:.04em;}
+  .card-new{position:absolute;margin:10px;background:var(--terracotta);color:#fff;font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:5px 9px;}
+  .card-media{position:relative;}
+  .card-wa{
+    margin-top:6px;
+    align-self:flex-start;
+    font-family:'Space Mono',monospace;
+    font-size:9.5px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--terracotta-dark);
+    border-bottom:1px solid var(--terracotta-dark);
+    padding-bottom:1px;
+  }
+
+  .empty-state{display:none;text-align:center;padding:70px 20px 90px;color:var(--ink-soft);}
+  .empty-state.show{display:block;}
+  .empty-state h2{font-family:'Fraunces',serif;font-size:1.5rem;margin-bottom:10px;color:var(--ink);}
+
+  .back-to-top{position:fixed;right:18px;bottom:18px;z-index:40;width:46px;height:46px;border:1px solid var(--ink);border-radius:50%;background:var(--ink);color:#fff;cursor:pointer;font-size:22px;line-height:1;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .2s ease,transform .2s ease,visibility .2s ease;}
+  .back-to-top.visible{opacity:1;visibility:visible;transform:translateY(0);}
+
+  /* ---- LIGHTBOX ---- */
+  .lightbox{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(20,16,11,.95);}
+  .lightbox.active{display:flex;}
+  .lightbox-content{position:relative;max-width:min(1000px,100%);max-height:100%;width:100%;display:flex;flex-direction:column;align-items:center;}
+  .lightbox-image-wrap{display:flex;align-items:center;justify-content:center;max-height:72vh;width:100%;}
+  .lightbox-image-wrap img{max-width:100%;max-height:72vh;width:auto;height:auto;object-fit:contain;}
+  .lightbox-meta{color:#fff;text-align:center;padding-top:16px;}
+  .lightbox-meta .lb-cat{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#e0a26b;margin-bottom:4px;}
+  .lightbox-meta h3{font-family:'Fraunces',serif;font-size:1.2rem;}
+  .lightbox-actions{padding-top:14px;}
+  .enquire-btn{display:inline-block;border:1px solid #fff;background:#fff;color:var(--ink);font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.08em;padding:12px 20px;text-transform:uppercase;}
+  .lightbox-close,.lightbox-nav{position:absolute;display:grid;place-items:center;width:42px;height:42px;border:1px solid rgba(255,255,255,.55);border-radius:50%;background:rgba(0,0,0,.3);color:#fff;cursor:pointer;font-size:24px;-webkit-tap-highlight-color:transparent;}
+  .lightbox-close{top:-10px;right:-10px;}
+  .lightbox-nav{top:36%;transform:translateY(-50%);}
+  .lightbox-nav.prev{left:-58px;}
+  .lightbox-nav.next{right:-58px;}
+  @media(max-width:900px){
+    .lightbox-nav.prev{left:6px;}
+    .lightbox-nav.next{right:6px;}
+    .lightbox-close{top:8px;right:8px;}
+  }
+
+  footer{border-top:1px solid var(--line);padding:34px 0 44px;text-align:center;}
+  footer a{font-family:'Fraunces',serif;font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;}
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation-duration:.001ms !important;transition-duration:.001ms !important;scroll-behavior:auto !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html" aria-label="Return to Youniverse homepage">Youniverse</a>
+    <div class="header-actions">
+      <a class="wa-link" href="https://wa.me/919967111111?text=Hi%20Youniverse" target="_blank" rel="noopener">WhatsApp Us</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+  <section class="page-head">
+    <p class="eyebrow">Full Range</p>
+    <h1>The Catalogue</h1>
+    <p>Every article we currently make — tap any photo for a closer look and to enquire.</p>
+  </section>
+
+  <div class="filters" id="filters" role="group" aria-label="Filter by category"></div>
+  <p class="count" id="resultCount"></p>
+
+  <section class="grid" id="grid" aria-label="Youniverse catalogue"></section>
+  <div class="empty-state" id="emptyState">
+    <h2>Nothing here yet</h2>
+    <p>We're still tagging pieces into this category — check back soon, or ask us on WhatsApp.</p>
+  </div>
+</main>
+
+<button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">↑</button>
+
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Product preview">
+  <div class="lightbox-content">
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close">×</button>
+    <button class="lightbox-nav prev" id="lightboxPrev" type="button" aria-label="Previous image">‹</button>
+    <div class="lightbox-image-wrap"><img id="lightboxImage" src="" alt=""></div>
+    <button class="lightbox-nav next" id="lightboxNext" type="button" aria-label="Next image">›</button>
+    <div class="lightbox-meta">
+      <p class="lb-cat" id="lightboxCat"></p>
+      <h3 id="lightboxName"></h3>
+    </div>
+    <div class="lightbox-actions"><a class="enquire-btn" id="lightboxEnquire" href="#" target="_blank" rel="noopener">Enquire on WhatsApp</a></div>
+  </div>
+</div>
+
+<footer><div class="wrap"><a href="index.html">Youniverse</a></div></footer>
+
+<script>
+  /* ============================================================
+     PRODUCT DATA — edit this array to fix names/categories.
+     category must be one of: shirts | jeans | co-ords | jackets
+     newIn: true shows the New In badge + counts toward that filter.
+     article: optional style code, leave empty string if none yet.
+     None of the 115 items below have been individually identified —
+     they all default to category: 'shirts' and a placeholder name.
+     Go through and correct name/category/article per item when you can.
+     ============================================================ */
+  const products = [
+    { id:1, file:'WhatsApp Image 2026-08-27 at 17.28.56 (1).jpeg', name:'Youniverse Original — Look 001', category:'shirts', article:'', newIn:false },
+    { id:2, file:'WhatsApp Image 2026-08-27 at 17.28.56 (10).jpeg', name:'Youniverse Original — Look 002', category:'shirts', article:'', newIn:false },
+    { id:3, file:'WhatsApp Image 2026-08-27 at 17.28.56 (11).jpeg', name:'Youniverse Original — Look 003', category:'shirts', article:'', newIn:false },
+    { id:4, file:'WhatsApp Image 2026-08-27 at 17.28.56 (12).jpeg', name:'Youniverse Original — Look 004', category:'shirts', article:'', newIn:false },
+    { id:5, file:'WhatsApp Image 2026-08-27 at 17.28.56 (13).jpeg', name:'Youniverse Original — Look 005', category:'shirts', article:'', newIn:false },
+    { id:6, file:'WhatsApp Image 2026-08-27 at 17.28.56 (14).jpeg', name:'Youniverse Original — Look 006', category:'shirts', article:'', newIn:false },
+    { id:7, file:'WhatsApp Image 2026-08-27 at 17.28.56 (15).jpeg', name:'Youniverse Original — Look 007', category:'shirts', article:'', newIn:false },
+    { id:8, file:'WhatsApp Image 2026-08-27 at 17.28.56 (16).jpeg', name:'Youniverse Original — Look 008', category:'shirts', article:'', newIn:false },
+    { id:9, file:'WhatsApp Image 2026-08-27 at 17.28.56 (2).jpeg', name:'Youniverse Original — Look 009', category:'shirts', article:'', newIn:false },
+    { id:10, file:'WhatsApp Image 2026-08-27 at 17.28.56 (3).jpeg', name:'Youniverse Original — Look 010', category:'shirts', article:'', newIn:false },
+    { id:11, file:'WhatsApp Image 2026-08-27 at 17.28.56 (4).jpeg', name:'Youniverse Original — Look 011', category:'shirts', article:'', newIn:false },
+    { id:12, file:'WhatsApp Image 2026-08-27 at 17.28.56 (5).jpeg', name:'Youniverse Original — Look 012', category:'shirts', article:'', newIn:false },
+    { id:13, file:'WhatsApp Image 2026-08-27 at 17.28.56 (6).jpeg', name:'Youniverse Original — Look 013', category:'shirts', article:'', newIn:false },
+    { id:14, file:'WhatsApp Image 2026-08-27 at 17.28.56 (7).jpeg', name:'Youniverse Original — Look 014', category:'shirts', article:'', newIn:false },
+    { id:15, file:'WhatsApp Image 2026-08-27 at 17.28.56 (8).jpeg', name:'Youniverse Original — Look 015', category:'shirts', article:'', newIn:false },
+    { id:16, file:'WhatsApp Image 2026-08-27 at 17.28.56 (9).jpeg', name:'Youniverse Original — Look 016', category:'shirts', article:'', newIn:false },
+    { id:17, file:'WhatsApp Image 2026-08-27 at 17.28.56.jpeg', name:'Youniverse Original — Look 017', category:'shirts', article:'', newIn:false },
+    { id:18, file:'WhatsApp Image 2026-08-27 at 17.29.35.jpeg', name:'Youniverse Original — Look 018', category:'shirts', article:'', newIn:false },
+    { id:19, file:'WhatsApp Image 2026-08-27 at 17.29.59.jpeg', name:'Youniverse Original — Look 019', category:'shirts', article:'', newIn:false },
+    { id:20, file:'WhatsApp Image 2026-08-27 at 17.30.15.jpeg', name:'Youniverse Original — Look 020', category:'shirts', article:'', newIn:false },
+    { id:21, file:'WhatsApp Image 2026-08-27 at 17.32.18 (1).jpeg', name:'Youniverse Original — Look 021', category:'shirts', article:'', newIn:false },
+    { id:22, file:'WhatsApp Image 2026-08-27 at 17.32.18.jpeg', name:'Youniverse Original — Look 022', category:'shirts', article:'', newIn:false },
+    { id:23, file:'WhatsApp Image 2026-08-27 at 17.32.19 (1).jpeg', name:'Youniverse Original — Look 023', category:'shirts', article:'', newIn:false },
+    { id:24, file:'WhatsApp Image 2026-08-27 at 17.32.19 (2).jpeg', name:'Youniverse Original — Look 024', category:'shirts', article:'', newIn:false },
+    { id:25, file:'WhatsApp Image 2026-08-27 at 17.32.19 (3).jpeg', name:'Youniverse Original — Look 025', category:'shirts', article:'', newIn:false },
+    { id:26, file:'WhatsApp Image 2026-08-27 at 17.32.19 (4).jpeg', name:'Youniverse Original — Look 026', category:'shirts', article:'', newIn:false },
+    { id:27, file:'WhatsApp Image 2026-08-27 at 17.32.19.jpeg', name:'Youniverse Original — Look 027', category:'shirts', article:'', newIn:false },
+    { id:28, file:'WhatsApp Image 2026-08-27 at 17.32.20 (1).jpeg', name:'Youniverse Original — Look 028', category:'shirts', article:'', newIn:false },
+    { id:29, file:'WhatsApp Image 2026-08-27 at 17.32.20 (10).jpeg', name:'Youniverse Original — Look 029', category:'shirts', article:'', newIn:false },
+    { id:30, file:'WhatsApp Image 2026-08-27 at 17.32.20 (11).jpeg', name:'Youniverse Original — Look 030', category:'shirts', article:'', newIn:false },
+    { id:31, file:'WhatsApp Image 2026-08-27 at 17.32.20 (12).jpeg', name:'Youniverse Original — Look 031', category:'shirts', article:'', newIn:false },
+    { id:32, file:'WhatsApp Image 2026-08-27 at 17.32.20 (13).jpeg', name:'Youniverse Original — Look 032', category:'shirts', article:'', newIn:false },
+    { id:33, file:'WhatsApp Image 2026-08-27 at 17.32.20 (14).jpeg', name:'Youniverse Original — Look 033', category:'shirts', article:'', newIn:false },
+    { id:34, file:'WhatsApp Image 2026-08-27 at 17.32.20 (15).jpeg', name:'Youniverse Original — Look 034', category:'shirts', article:'', newIn:false },
+    { id:35, file:'WhatsApp Image 2026-08-27 at 17.32.20 (16).jpeg', name:'Youniverse Original — Look 035', category:'shirts', article:'', newIn:false },
+    { id:36, file:'WhatsApp Image 2026-08-27 at 17.32.20 (17).jpeg', name:'Youniverse Original — Look 036', category:'shirts', article:'', newIn:false },
+    { id:37, file:'WhatsApp Image 2026-08-27 at 17.32.20 (18).jpeg', name:'Youniverse Original — Look 037', category:'shirts', article:'', newIn:false },
+    { id:38, file:'WhatsApp Image 2026-08-27 at 17.32.20 (19).jpeg', name:'Youniverse Original — Look 038', category:'shirts', article:'', newIn:false },
+    { id:39, file:'WhatsApp Image 2026-08-27 at 17.32.20 (2).jpeg', name:'Youniverse Original — Look 039', category:'shirts', article:'', newIn:false },
+    { id:40, file:'WhatsApp Image 2026-08-27 at 17.32.20 (20).jpeg', name:'Youniverse Original — Look 040', category:'shirts', article:'', newIn:false },
+    { id:41, file:'WhatsApp Image 2026-08-27 at 17.32.20 (3).jpeg', name:'Youniverse Original — Look 041', category:'shirts', article:'', newIn:false },
+    { id:42, file:'WhatsApp Image 2026-08-27 at 17.32.20 (4).jpeg', name:'Youniverse Original — Look 042', category:'shirts', article:'', newIn:false },
+    { id:43, file:'WhatsApp Image 2026-08-27 at 17.32.20 (5).jpeg', name:'Youniverse Original — Look 043', category:'shirts', article:'', newIn:false },
+    { id:44, file:'WhatsApp Image 2026-08-27 at 17.32.20 (6).jpeg', name:'Youniverse Original — Look 044', category:'shirts', article:'', newIn:false },
+    { id:45, file:'WhatsApp Image 2026-08-27 at 17.32.20 (7).jpeg', name:'Youniverse Original — Look 045', category:'shirts', article:'', newIn:false },
+    { id:46, file:'WhatsApp Image 2026-08-27 at 17.32.20 (8).jpeg', name:'Youniverse Original — Look 046', category:'shirts', article:'', newIn:false },
+    { id:47, file:'WhatsApp Image 2026-08-27 at 17.32.20 (9).jpeg', name:'Youniverse Original — Look 047', category:'shirts', article:'', newIn:false },
+    { id:48, file:'WhatsApp Image 2026-08-27 at 17.32.20.jpeg', name:'Youniverse Original — Look 048', category:'shirts', article:'', newIn:false },
+    { id:49, file:'WhatsApp Image 2026-08-27 at 17.35.46 (1).jpeg', name:'Youniverse Original — Look 049', category:'shirts', article:'', newIn:false },
+    { id:50, file:'WhatsApp Image 2026-08-27 at 17.35.46.jpeg', name:'Youniverse Original — Look 050', category:'shirts', article:'', newIn:false },
+    { id:51, file:'WhatsApp Image 2026-08-27 at 17.35.47 (1).jpeg', name:'Youniverse Original — Look 051', category:'shirts', article:'', newIn:false },
+    { id:52, file:'WhatsApp Image 2026-08-27 at 17.35.47 (2).jpeg', name:'Youniverse Original — Look 052', category:'shirts', article:'', newIn:false },
+    { id:53, file:'WhatsApp Image 2026-08-27 at 17.35.47 (3).jpeg', name:'Youniverse Original — Look 053', category:'shirts', article:'', newIn:false },
+    { id:54, file:'WhatsApp Image 2026-08-27 at 17.35.47 (4).jpeg', name:'Youniverse Original — Look 054', category:'shirts', article:'', newIn:false },
+    { id:55, file:'WhatsApp Image 2026-08-27 at 17.35.47 (5).jpeg', name:'Youniverse Original — Look 055', category:'shirts', article:'', newIn:false },
+    { id:56, file:'WhatsApp Image 2026-08-27 at 17.35.47 (6).jpeg', name:'Youniverse Original — Look 056', category:'shirts', article:'', newIn:false },
+    { id:57, file:'WhatsApp Image 2026-08-27 at 17.35.47 (7).jpeg', name:'Youniverse Original — Look 057', category:'shirts', article:'', newIn:false },
+    { id:58, file:'WhatsApp Image 2026-08-27 at 17.35.47.jpeg', name:'Youniverse Original — Look 058', category:'shirts', article:'', newIn:false },
+    { id:59, file:'WhatsApp Image 2026-08-27 at 17.35.48 (1).jpeg', name:'Youniverse Original — Look 059', category:'shirts', article:'', newIn:false },
+    { id:60, file:'WhatsApp Image 2026-08-27 at 17.35.48 (10).jpeg', name:'Youniverse Original — Look 060', category:'shirts', article:'', newIn:false },
+    { id:61, file:'WhatsApp Image 2026-08-27 at 17.35.48 (11).jpeg', name:'Youniverse Original — Look 061', category:'shirts', article:'', newIn:false },
+    { id:62, file:'WhatsApp Image 2026-08-27 at 17.35.48 (12).jpeg', name:'Youniverse Original — Look 062', category:'shirts', article:'', newIn:false },
+    { id:63, file:'WhatsApp Image 2026-08-27 at 17.35.48 (13).jpeg', name:'Youniverse Original — Look 063', category:'shirts', article:'', newIn:false },
+    { id:64, file:'WhatsApp Image 2026-08-27 at 17.35.48 (14).jpeg', name:'Youniverse Original — Look 064', category:'shirts', article:'', newIn:false },
+    { id:65, file:'WhatsApp Image 2026-08-27 at 17.35.48 (15).jpeg', name:'Youniverse Original — Look 065', category:'shirts', article:'', newIn:false },
+    { id:66, file:'WhatsApp Image 2026-08-27 at 17.35.48 (16).jpeg', name:'Youniverse Original — Look 066', category:'shirts', article:'', newIn:false },
+    { id:67, file:'WhatsApp Image 2026-08-27 at 17.35.48 (2).jpeg', name:'Youniverse Original — Look 067', category:'shirts', article:'', newIn:false },
+    { id:68, file:'WhatsApp Image 2026-08-27 at 17.35.48 (3).jpeg', name:'Youniverse Original — Look 068', category:'shirts', article:'', newIn:false },
+    { id:69, file:'WhatsApp Image 2026-08-27 at 17.35.48 (4).jpeg', name:'Youniverse Original — Look 069', category:'shirts', article:'', newIn:false },
+    { id:70, file:'WhatsApp Image 2026-08-27 at 17.35.48 (5).jpeg', name:'Youniverse Original — Look 070', category:'shirts', article:'', newIn:false },
+    { id:71, file:'WhatsApp Image 2026-08-27 at 17.35.48 (6).jpeg', name:'Youniverse Original — Look 071', category:'shirts', article:'', newIn:false },
+    { id:72, file:'WhatsApp Image 2026-08-27 at 17.35.48 (7).jpeg', name:'Youniverse Original — Look 072', category:'shirts', article:'', newIn:false },
+    { id:73, file:'WhatsApp Image 2026-08-27 at 17.35.48 (8).jpeg', name:'Youniverse Original — Look 073', category:'shirts', article:'', newIn:false },
+    { id:74, file:'WhatsApp Image 2026-08-27 at 17.35.48 (9).jpeg', name:'Youniverse Original — Look 074', category:'shirts', article:'', newIn:false },
+    { id:75, file:'WhatsApp Image 2026-08-27 at 17.35.48.jpeg', name:'Youniverse Original — Look 075', category:'shirts', article:'', newIn:false },
+    { id:76, file:'WhatsApp Image 2026-08-27 at 17.36.10 (1).jpeg', name:'Youniverse Original — Look 076', category:'shirts', article:'', newIn:false },
+    { id:77, file:'WhatsApp Image 2026-08-27 at 17.36.10.jpeg', name:'Youniverse Original — Look 077', category:'shirts', article:'', newIn:false },
+    { id:78, file:'WhatsApp Image 2026-08-27 at 17.36.11.jpeg', name:'Youniverse Original — Look 078', category:'shirts', article:'', newIn:false },
+    { id:79, file:'WhatsApp Image 2026-08-27 at 17.38.36 (1).jpeg', name:'Youniverse Original — Look 079', category:'shirts', article:'', newIn:false },
+    { id:80, file:'WhatsApp Image 2026-08-27 at 17.38.36 (2).jpeg', name:'Youniverse Original — Look 080', category:'shirts', article:'', newIn:false },
+    { id:81, file:'WhatsApp Image 2026-08-27 at 17.38.36 (3).jpeg', name:'Youniverse Original — Look 081', category:'shirts', article:'', newIn:false },
+    { id:82, file:'WhatsApp Image 2026-08-27 at 17.38.36 (4).jpeg', name:'Youniverse Original — Look 082', category:'shirts', article:'', newIn:false },
+    { id:83, file:'WhatsApp Image 2026-08-27 at 17.38.36 (5).jpeg', name:'Youniverse Original — Look 083', category:'shirts', article:'', newIn:false },
+    { id:84, file:'WhatsApp Image 2026-08-27 at 17.38.36 (6).jpeg', name:'Youniverse Original — Look 084', category:'shirts', article:'', newIn:false },
+    { id:85, file:'WhatsApp Image 2026-08-27 at 17.38.36 (7).jpeg', name:'Youniverse Original — Look 085', category:'shirts', article:'', newIn:false },
+    { id:86, file:'WhatsApp Image 2026-08-27 at 17.38.36.jpeg', name:'Youniverse Original — Look 086', category:'shirts', article:'', newIn:false },
+    { id:87, file:'WhatsApp Image 2026-08-27 at 17.42.22 (1).jpeg', name:'Youniverse Original — Look 087', category:'shirts', article:'', newIn:false },
+    { id:88, file:'WhatsApp Image 2026-08-27 at 17.42.22 (2).jpeg', name:'Youniverse Original — Look 088', category:'shirts', article:'', newIn:false },
+    { id:89, file:'WhatsApp Image 2026-08-27 at 17.42.22 (3).jpeg', name:'Youniverse Original — Look 089', category:'shirts', article:'', newIn:false },
+    { id:90, file:'WhatsApp Image 2026-08-27 at 17.42.22 (4).jpeg', name:'Youniverse Original — Look 090', category:'shirts', article:'', newIn:false },
+    { id:91, file:'WhatsApp Image 2026-08-27 at 17.42.22 (5).jpeg', name:'Youniverse Original — Look 091', category:'shirts', article:'', newIn:false },
+    { id:92, file:'WhatsApp Image 2026-08-27 at 17.42.22.jpeg', name:'Youniverse Original — Look 092', category:'shirts', article:'', newIn:false },
+    { id:93, file:'WhatsApp Image 2026-08-27 at 17.42.23 (1).jpeg', name:'Youniverse Original — Look 093', category:'shirts', article:'', newIn:false },
+    { id:94, file:'WhatsApp Image 2026-08-27 at 17.42.23 (10).jpeg', name:'Youniverse Original — Look 094', category:'shirts', article:'', newIn:false },
+    { id:95, file:'WhatsApp Image 2026-08-27 at 17.42.23 (11).jpeg', name:'Youniverse Original — Look 095', category:'shirts', article:'', newIn:false },
+    { id:96, file:'WhatsApp Image 2026-08-27 at 17.42.23 (12).jpeg', name:'Youniverse Original — Look 096', category:'shirts', article:'', newIn:false },
+    { id:97, file:'WhatsApp Image 2026-08-27 at 17.42.23 (13).jpeg', name:'Youniverse Original — Look 097', category:'shirts', article:'', newIn:false },
+    { id:98, file:'WhatsApp Image 2026-08-27 at 17.42.23 (14).jpeg', name:'Youniverse Original — Look 098', category:'shirts', article:'', newIn:false },
+    { id:99, file:'WhatsApp Image 2026-08-27 at 17.42.23 (15).jpeg', name:'Youniverse Original — Look 099', category:'shirts', article:'', newIn:false },
+    { id:100, file:'WhatsApp Image 2026-08-27 at 17.42.23 (16).jpeg', name:'Youniverse Original — Look 100', category:'shirts', article:'', newIn:false },
+    { id:101, file:'WhatsApp Image 2026-08-27 at 17.42.23 (17).jpeg', name:'Youniverse Original — Look 101', category:'shirts', article:'', newIn:false },
+    { id:102, file:'WhatsApp Image 2026-08-27 at 17.42.23 (18).jpeg', name:'Youniverse Original — Look 102', category:'shirts', article:'', newIn:false },
+    { id:103, file:'WhatsApp Image 2026-08-27 at 17.42.23 (19).jpeg', name:'Youniverse Original — Look 103', category:'shirts', article:'', newIn:false },
+    { id:104, file:'WhatsApp Image 2026-08-27 at 17.42.23 (2).jpeg', name:'Youniverse Original — Look 104', category:'shirts', article:'', newIn:false },
+    { id:105, file:'WhatsApp Image 2026-08-27 at 17.42.23 (20).jpeg', name:'Youniverse Original — Look 105', category:'shirts', article:'', newIn:false },
+    { id:106, file:'WhatsApp Image 2026-08-27 at 17.42.23 (21).jpeg', name:'Youniverse Original — Look 106', category:'shirts', article:'', newIn:false },
+    { id:107, file:'WhatsApp Image 2026-08-27 at 17.42.23 (22).jpeg', name:'Youniverse Original — Look 107', category:'shirts', article:'', newIn:false },
+    { id:108, file:'WhatsApp Image 2026-08-27 at 17.42.23 (3).jpeg', name:'Youniverse Original — Look 108', category:'shirts', article:'', newIn:false },
+    { id:109, file:'WhatsApp Image 2026-08-27 at 17.42.23 (4).jpeg', name:'Youniverse Original — Look 109', category:'shirts', article:'', newIn:false },
+    { id:110, file:'WhatsApp Image 2026-08-27 at 17.42.23 (5).jpeg', name:'Youniverse Original — Look 110', category:'shirts', article:'', newIn:false },
+    { id:111, file:'WhatsApp Image 2026-08-27 at 17.42.23 (6).jpeg', name:'Youniverse Original — Look 111', category:'shirts', article:'', newIn:false },
+    { id:112, file:'WhatsApp Image 2026-08-27 at 17.42.23 (7).jpeg', name:'Youniverse Original — Look 112', category:'shirts', article:'', newIn:false },
+    { id:113, file:'WhatsApp Image 2026-08-27 at 17.42.23 (8).jpeg', name:'Youniverse Original — Look 113', category:'shirts', article:'', newIn:false },
+    { id:114, file:'WhatsApp Image 2026-08-27 at 17.42.23 (9).jpeg', name:'Youniverse Original — Look 114', category:'shirts', article:'', newIn:false },
+    { id:115, file:'WhatsApp Image 2026-08-27 at 17.42.23.jpeg', name:'Youniverse Original — Look 115', category:'shirts', article:'', newIn:false },
+  ];
+
+  /* ============================================================
+     RENDER + FILTER + LIGHTBOX — no need to edit below this line.
+     ============================================================ */
+  const CATS = [
+    { key:'all', label:'All' },
+    { key:'shirts', label:'Shirts' },
+    { key:'jeans', label:'Jeans' },
+    { key:'co-ords', label:'Co-ords' },
+    { key:'jackets', label:'Jackets' },
+    { key:'new', label:'New In' }
+  ];
+
+  const grid = document.getElementById('grid');
+  const filtersEl = document.getElementById('filters');
+  const emptyState = document.getElementById('emptyState');
+  const resultCount = document.getElementById('resultCount');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightboxImage');
+  const lightboxCat = document.getElementById('lightboxCat');
+  const lightboxName = document.getElementById('lightboxName');
+  let activeFilter = 'all';
+  let currentIndex = 0;
+
+  function visibleProducts(){
+    if (activeFilter === 'all') return products;
+    if (activeFilter === 'new') return products.filter(p => p.newIn);
+    return products.filter(p => p.category === activeFilter);
+  }
+
+  function buildFilters(){
+    filtersEl.innerHTML = CATS.map(c => {
+      const n = c.key === 'all' ? products.length : (c.key === 'new' ? products.filter(p=>p.newIn).length : products.filter(p=>p.category===c.key).length);
+      return '<button class="chip" data-key="'+c.key+'" aria-pressed="'+(c.key==='all') +'">'+c.label+' ('+n+')</button>';
+    }).join('');
+    filtersEl.querySelectorAll('.chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeFilter = btn.dataset.key;
+        filtersEl.querySelectorAll('.chip').forEach(b => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+        renderGrid();
+      });
+    });
+  }
+
+  function buildCard(p, globalIndex){
+    const card = document.createElement('div');
+    card.className = 'card' + (globalIndex % 9 === 0 ? ' feature' : '');
+    card.dataset.id = p.id;
+
+    const media = document.createElement('div');
+    media.className = 'card-media';
+    if (p.newIn){
+      const badge = document.createElement('span');
+      badge.className = 'card-new';
+      badge.textContent = 'New';
+      media.appendChild(badge);
+    }
+    const img = document.createElement('img');
+    img.src = encodeURI(p.file);
+    img.alt = 'Youniverse — ' + p.name;
+    img.loading = 'lazy';
+    media.appendChild(img);
+
+    const body = document.createElement('div');
+    body.className = 'card-body';
+    body.innerHTML =
+      '<span class="card-cat">' + p.category + '</span>' +
+      '<span class="card-name">' + p.name + '</span>' +
+      (p.article ? '<span class="card-code">' + p.article + '</span>' : '') +
+      '<span class="card-wa">Enquire on WhatsApp</span>';
+
+    card.appendChild(media);
+    card.appendChild(body);
+    card.addEventListener('click', () => openLightbox(p.id));
+    return card;
+  }
+
+  function renderGrid(){
+    const list = visibleProducts();
+    grid.innerHTML = '';
+    list.forEach((p, i) => grid.appendChild(buildCard(p, i)));
+    emptyState.classList.toggle('show', list.length === 0);
+    grid.style.display = list.length === 0 ? 'none' : 'grid';
+    resultCount.textContent = list.length + (list.length === 1 ? ' piece' : ' pieces');
+    // wait for images to load, then size rows so nothing crops
+    requestAnimationFrame(sizeAllCards);
+  }
+
+  function sizeAllCards(){
+    const rowH = 4; // matches grid-auto-rows
+    const gap = parseFloat(getComputedStyle(grid).gap) || 16;
+    grid.querySelectorAll('.card').forEach(card => {
+      const img = card.querySelector('img');
+      const applySpan = () => {
+        const contentHeight = card.getBoundingClientRect().height;
+        const span = Math.ceil((contentHeight + gap) / (rowH + gap));
+        card.style.gridRowEnd = 'span ' + span;
+      };
+      if (img.complete) applySpan();
+      else img.addEventListener('load', applySpan, { once:true });
+    });
+  }
+  window.addEventListener('resize', () => { clearTimeout(window.__rt); window.__rt = setTimeout(sizeAllCards, 150); });
+
+  function openLightbox(id){
+    const list = visibleProducts();
+    currentIndex = list.findIndex(p => p.id === id);
+    updateLightbox(list);
+    lightbox.classList.add('active');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function updateLightbox(list){
+    list = list || visibleProducts();
+    const p = list[currentIndex];
+    lightboxImage.src = encodeURI(p.file);
+    lightboxImage.alt = 'Youniverse — ' + p.name;
+    lightboxCat.textContent = p.category;
+    lightboxName.textContent = p.name;
+    const msg = 'Hi Youniverse, I\'m interested in "' + p.name + '" (' + p.category + (p.article ? ', ' + p.article : '') + '). Could you share price, sizes available and lead time?';
+    document.getElementById('lightboxEnquire').href = 'https://wa.me/919967111111?text=' + encodeURIComponent(msg);
+  }
+  function closeLightbox(){
+    lightbox.classList.remove('active');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  function prevImage(){ const list = visibleProducts(); currentIndex = (currentIndex - 1 + list.length) % list.length; updateLightbox(list); }
+  function nextImage(){ const list = visibleProducts(); currentIndex = (currentIndex + 1) % list.length; updateLightbox(list); }
+
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  document.getElementById('lightboxPrev').addEventListener('click', prevImage);
+  document.getElementById('lightboxNext').addEventListener('click', nextImage);
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') prevImage();
+    if (e.key === 'ArrowRight') nextImage();
+  });
+
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => backToTop.classList.toggle('visible', window.scrollY > 350), { passive:true });
+  backToTop.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+
+  buildFilters();
+  renderGrid();
+</script>
+</body>
+</html>
