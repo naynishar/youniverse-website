@@ -154,6 +154,17 @@
       "jeans-02.jpeg",
       "jeans-03.jpeg",
       "jeans-04.jpeg",
+      "WhatsApp Image 2026-08-30 at 13.58.54.jpeg",
+      "WhatsApp Image 2026-08-30 at 13.58.54 (1).jpeg",
+      "WhatsApp Image 2026-08-30 at 13.58.54 (2).jpeg",
+      "WhatsApp Image 2026-08-30 at 13.58.54 (3).jpeg",
+      "WhatsApp Image 2026-08-30 at 13.58.54 (4).jpeg",
+      "WhatsApp Image 2026-08-30 at 13.58.54 (5).jpeg",
+      "WhatsApp Image 2026-08-30 at 13.58.54 (6).jpeg",
+      "WhatsApp Image 2026-08-30 at 13.58.54 (7).jpeg",
+      "WhatsApp Image 2026-08-30 at 13.58.54 (8).jpeg",
+      "WhatsApp Image 2026-08-30 at 13.58.54 (9).jpeg",
+      "WhatsApp Image 2026-08-30 at 13.58.54 (10).jpeg"
     ].map(file=>"products/"+file);
     const grid=document.getElementById("grid"),lightbox=document.getElementById("lightbox"),largeImage=document.getElementById("largeImage"),enquire=document.getElementById("enquire"),topButton=document.getElementById("topButton");let current=0;
     imageFiles.forEach((src,index)=>{const card=document.createElement("button");card.className="card";card.type="button";card.setAttribute("aria-label","Open catalogue image "+(index+1));const img=document.createElement("img");img.src=src;img.alt="Youniverse catalogue image";img.loading="lazy";card.appendChild(img);card.onclick=()=>open(index);grid.appendChild(card)});
