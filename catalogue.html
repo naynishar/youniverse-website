@@ -153,14 +153,6 @@
       "jeans-02.jpeg",
       "jeans-03.jpeg",
       "jeans-04.jpeg",
-      "new-01.jpeg",
-      "new-02.jpeg",
-      "new-03.jpeg",
-      "new-04.jpeg",
-      "new-05.jpeg",
-      "new-06.jpeg",
-      "new-07.jpeg",
-      "new-08.jpeg"
     ].map(file=>"products/"+file);
     const grid=document.getElementById("grid"),lightbox=document.getElementById("lightbox"),largeImage=document.getElementById("largeImage"),enquire=document.getElementById("enquire"),topButton=document.getElementById("topButton");let current=0;
     imageFiles.forEach((src,index)=>{const card=document.createElement("button");card.className="card";card.type="button";card.setAttribute("aria-label","Open catalogue image "+(index+1));const img=document.createElement("img");img.src=src;img.alt="Youniverse catalogue image";img.loading="lazy";card.appendChild(img);card.onclick=()=>open(index);grid.appendChild(card)});
