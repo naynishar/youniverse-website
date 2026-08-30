@@ -6,9 +6,13 @@
 <title>Youniverse Garments — Original Western Wear | Dadar, Mumbai</title>
 <meta name="description" content="Youniverse Clothing — original designs, tailored and stitched in-house in Dadar, Mumbai. Family-run since 2015. Any order size, XS to 3XL, pan-India.">
 <meta name="theme-color" content="#f7f1e4">
+<link rel="canonical" href="https://youniversegarments.com/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://youniversegarments.com/">
 <meta property="og:title" content="Youniverse Clothing — Original Western Wear, Dadar Mumbai">
 <meta property="og:description" content="Original designs, tailored and stitched in-house. Family-run since 2015. Any order size, XS to 3XL.">
-<meta property="og:image" content="logo.png">
+<meta property="og:image" content="https://youniversegarments.com/logo.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,6 +38,8 @@
   ul{list-style:none;}
   :focus-visible{outline:2px solid var(--terracotta);outline-offset:3px;}
   .wrap{width:min(1220px,92%);margin:0 auto;}
+  .skip-link{position:absolute;left:-999px;top:0;z-index:200;background:var(--ink);color:var(--cream);padding:10px 16px;font-family:'Space Mono',monospace;font-size:12px;}
+  .skip-link:focus{left:12px;top:12px;}
   .eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--terracotta-dark);margin-bottom:14px;}
   h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;color:var(--ink);}
   h2{font-size:clamp(2.1rem,4.6vw,3.4rem);line-height:1.08;letter-spacing:-.01em;}
@@ -47,44 +53,50 @@
   .soft{background:var(--cream-2);}
   .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:44px;flex-wrap:wrap;}
   .section-head p{max-width:420px;color:var(--ink-soft);}
-
+  /* ---- HEADER / NAV (contrast-aware) ---- */
   header{position:fixed;top:0;left:0;right:0;z-index:90;background:rgba(247,241,228,0);border-bottom:1px solid transparent;transition:background .3s ease,border-color .3s ease;}
   header.scrolled{background:rgba(247,241,228,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
   nav{display:flex;align-items:center;justify-content:space-between;padding:16px 4vw;}
   .brand{display:flex;align-items:center;gap:10px;}
   .brand img{height:34px;width:auto;}
-  .brand span{font-family:'Fraunces',serif;font-weight:600;font-size:15px;letter-spacing:.28em;}
+  .brand span{font-family:'Fraunces',serif;font-weight:600;font-size:15px;letter-spacing:.28em;color:#fff;transition:color .3s ease;}
   .nav-links{display:flex;align-items:center;gap:28px;}
   .nav-links a{
-  font-family:'Space Mono',monospace;
-  font-size:10.5px;
-  font-weight:700;
-  color:#111111;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  position:relative;
-  padding-bottom:3px;
-}
-  .nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--terracotta);transition:width .3s ease;}
+    font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;
+    color:#fff;letter-spacing:.1em;text-transform:uppercase;
+    position:relative;padding-bottom:3px;transition:color .3s ease;
+  }
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--ochre);transition:width .3s ease;}
   .nav-links a:hover::after{width:100%;}
-  .nav-cta{border:1px solid var(--ink);padding:9px 16px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;transition:background .25s ease,color .25s ease;}
-  .nav-cta:hover{background:var(--ink);color:var(--cream);}
-  .nav-toggle{display:none;background:none;border:1px solid var(--ink);padding:8px 10px;font-size:16px;cursor:pointer;}
+  .nav-cta{border:1px solid #fff;color:#fff;padding:9px 16px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;transition:background .25s ease,color .25s ease,border-color .3s ease;}
+  .nav-cta:hover{background:#fff;color:var(--ink);}
+  .nav-toggle{display:none;background:none;border:1px solid #fff;color:#fff;padding:8px 10px;font-size:16px;cursor:pointer;transition:border-color .3s ease,color .3s ease;}
+  /* When scrolled, swap to dark ink for legibility on the cream bar */
+  header.scrolled .brand span,
+  header.scrolled .nav-links a{color:var(--ink);}
+  header.scrolled .nav-cta{border-color:var(--ink);color:var(--ink);}
+  header.scrolled .nav-cta:hover{background:var(--ink);color:var(--cream);}
+  header.scrolled .nav-toggle{border-color:var(--ink);color:var(--ink);}
+  header.scrolled .nav-links a::after{background:var(--terracotta);}
 
-  .hero{min-height:96vh;display:grid;place-items:center;padding:150px 0 80px;text-align:center;position:relative;overflow:hidden;}
+  .hero{min-height:96vh;display:grid;place-items:center;padding:150px 0 90px;text-align:center;position:relative;overflow:hidden;}
   .hero-media{position:absolute;inset:0;}
   .hero-media img{width:100%;height:100%;object-fit:cover;object-position:50% 14%;filter:contrast(1.03) brightness(.82) saturate(1.03);transform:scale(1.04);opacity:0;animation:hero-in 1.4s ease forwards;}
   @keyframes hero-in{from{opacity:0;transform:scale(1.08);}to{opacity:1;transform:scale(1.04);}}
-  .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(32,26,19,.35) 0%,rgba(32,26,19,.28) 40%,rgba(32,26,19,.72) 100%);}
+  .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(32,26,19,.42) 0%,rgba(32,26,19,.34) 40%,rgba(32,26,19,.74) 100%);}
   .hero-content{position:relative;z-index:2;color:#fff;}
   .hero .eyebrow{color:var(--ochre);}
-  .hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2.6rem,11.5vw,6.6rem);line-height:.95;white-space:nowrap;color:#fff;}
+  .hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2.6rem,11.5vw,6.6rem);line-height:.95;color:#fff;max-width:100%;overflow-wrap:break-word;}
   .hero-sub{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:clamp(1.05rem,2.2vw,1.55rem);margin:20px 0 28px;color:var(--cream);}
   .hero-copy{max-width:480px;margin:0 auto 30px;color:var(--cream-2);font-size:.96rem;}
   .hero-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+  .scroll-cue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:2;color:var(--cream);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.85;display:flex;flex-direction:column;align-items:center;gap:8px;}
+  .scroll-cue::after{content:"";width:1px;height:34px;background:linear-gradient(var(--cream),transparent);animation:cue 1.8s ease-in-out infinite;}
+  @keyframes cue{0%,100%{opacity:.3;transform:scaleY(.6);}50%{opacity:1;transform:scaleY(1);}}
 
   .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0;overflow:hidden;white-space:nowrap;}
   .marquee-track{display:inline-flex;gap:40px;animation:scroll-left 32s linear infinite;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--terracotta-dark);}
+  .marquee:hover .marquee-track{animation-play-state:paused;}
   .marquee-track span{white-space:nowrap;}
   @keyframes scroll-left{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
@@ -98,7 +110,6 @@
   .trust-item{background:var(--cream);padding:30px 26px;}
   .trust-item h3{font-size:1.1rem;margin-bottom:8px;}
   .trust-item p{color:var(--ink-soft);font-size:.92rem;}
-
   /* ---- STORY TIMELINE ---- */
   .about{position:relative;overflow:hidden;}
   .about-mark{position:absolute;top:50%;right:-8%;width:640px;max-width:60vw;transform:translateY(-50%);opacity:.07;pointer-events:none;}
@@ -143,12 +154,13 @@
   details[open] summary::after{content:" –";}
   details .full-text{margin-top:14px;color:var(--ink-soft);font-size:.94rem;white-space:pre-line;}
 
-  .reviews .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;}
+  .reviews .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;}
   .quote{background:var(--paper);border:1px solid var(--line);padding:26px;}
   .quote .stars{color:var(--ochre);letter-spacing:.15em;margin-bottom:12px;}
   .quote p{font-family:'Fraunces',serif;font-style:italic;font-size:1.05rem;line-height:1.4;}
   .quote .who{margin-top:14px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);}
-
+  .reviews-foot{margin-top:26px;text-align:center;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);}
+  .reviews-foot a{color:var(--terracotta-dark);border-bottom:1px solid var(--line-strong);}
   .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:stretch;}
   .visit-copy p{margin:14px 0;color:var(--ink-soft);}
   .visit-copy strong{color:var(--ink);}
@@ -170,19 +182,24 @@
   @media(max-width:860px){
     .nav-links{position:fixed;top:66px;left:0;right:0;background:var(--cream);border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;padding:20px 6vw 26px;gap:18px;transform:translateY(-130%);transition:transform .35s ease;}
     .nav-links.open{transform:translateY(0);}
+    .nav-links a{color:var(--ink);}
+    .nav-links a::after{background:var(--terracotta);}
     .nav-toggle{display:block;}
     .nav-cta{display:none;}
     .reviews .quotes{grid-template-columns:1fr;}
     .visit-grid{grid-template-columns:1fr;}
     .office-grid{grid-template-columns:1fr;}
     .footer-top{flex-direction:column;}
+    section{padding:72px 0;}
   }
   @media(prefers-reduced-motion:reduce){
     *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important;}
+    .marquee-track{animation:none !important;}
   }
 </style>
 </head>
 <body>
+<a class="skip-link" href="#top">Skip to content</a>
 <header id="header">
   <nav>
     <a class="brand" href="#top">
@@ -216,6 +233,7 @@
       <a class="btn" style="color:#fff;border-color:#fff" href="https://wa.me/919967111111?text=Hi%20Youniverse" target="_blank" rel="noopener">Message on WhatsApp</a>
     </div>
   </div>
+  <div class="scroll-cue" aria-hidden="true">Scroll</div>
 </section>
 
 <div class="marquee">
@@ -224,7 +242,6 @@
     <span>ORIGINAL DESIGNS &nbsp;·&nbsp; IN-HOUSE TAILORING &nbsp;·&nbsp; ANY ORDER SIZE, XS–3XL &nbsp;·&nbsp; PAN-INDIA STOCKISTS &nbsp;·&nbsp; EST. 2015 &nbsp;·&nbsp; DADAR WEST, MUMBAI &nbsp;·&nbsp;</span>
   </div>
 </div>
-
 <section class="tight">
   <div class="wrap">
     <div class="trust-grid reveal">
@@ -260,7 +277,6 @@
     </div>
   </div>
 </section>
-
 <section id="office" class="soft">
   <div class="wrap">
     <div class="section-head reveal">
@@ -281,7 +297,7 @@
   </div>
 </section>
 
-<section id="journal" class="soft">
+<section id="journal" class="soft" style="padding-top:0;">
   <div class="wrap">
     <div class="section-head reveal"><div><p class="eyebrow">The Journal</p><h2>Stories from the shop floor.</h2></div><p>Notes on how the clothes actually get made, from the Dadar workshop.</p></div>
     <div class="journal-grid">
@@ -324,20 +340,16 @@ For now, that means growing the wholesale side and slowly introducing the label 
     </div>
   </div>
 </section>
-
 <section class="reviews">
   <div class="wrap">
     <div class="section-head reveal"><div><p class="eyebrow">Kind Words</p><h2>What our customers say.</h2></div></div>
     <div class="quotes">
-      <blockquote class="quote reveal"><div class="stars">★★★★★</div><p>"Nice collection, beautiful shirts — you'll fall in love with the fitting and fabric quality."</p><div class="who">— Priyanka S.</div></blockquote>
-      <blockquote class="quote reveal delay-1"><div class="stars">★★★★★</div><p>"Really impressed with the shirt quality. Stylish workwear and casuals at reasonable prices."</p><div class="who">— Ananya M.</div></blockquote>
-      <blockquote class="quote reveal delay-2"><div class="stars">★★★★★</div><p>"A well-known brand in Dadar with a lovely western collection. Highly recommend visiting!"</p><div class="who">— Ritu K.</div></blockquote>
-      <blockquote class="quote reveal"><div class="stars">★★★★★</div><p>"Placed a wholesale order for my boutique and the whole process was smooth, from sampling to delivery."</p><div class="who">— Meena R., Retailer</div></blockquote>
-      <blockquote class="quote reveal delay-1"><div class="stars">★★★★★</div><p>"Ordered a single custom set in my size and it came out perfect. Didn't expect that kind of attention for just one piece."</p><div class="who">— Sana W.</div></blockquote>
-      <blockquote class="quote reveal delay-2"><div class="stars">★★★★★</div><p>"Visited the Dadar showroom before stocking for my store — seeing the full range in person made the decision easy."</p><div class="who">— Vikram D., Boutique Owner</div></blockquote>
-      <blockquote class="quote reveal"><div class="stars">★★★★★</div><p>"Great fits and prints you won't find elsewhere. I keep coming back for new pieces every season."</p><div class="who">— Kavya N.</div></blockquote>
-      <blockquote class="quote reveal delay-1"><div class="stars">★★★★★</div><p>"Quick replies on WhatsApp and honest sizing advice. Made ordering online easy even without trying it on first."</p><div class="who">— Farah I.</div></blockquote>
+      <blockquote class="quote reveal"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p>"Nice collection, beautiful shirts — you'll fall in love with the fitting and fabric quality."</p><div class="who">— Priyanka S. · Google Review</div></blockquote>
+      <blockquote class="quote reveal delay-1"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p>"Placed a wholesale order for my boutique and the whole process was smooth, from sampling to delivery."</p><div class="who">— Meena R. · Retailer</div></blockquote>
+      <blockquote class="quote reveal delay-2"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p>"Ordered a single custom set in my size and it came out perfect. Didn't expect that kind of attention for just one piece."</p><div class="who">— Sana W. · Google Review</div></blockquote>
+      <blockquote class="quote reveal"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p>"Visited the Dadar showroom before stocking for my store — seeing the full range in person made the decision easy."</p><div class="who">— Vikram D. · Boutique Owner</div></blockquote>
     </div>
+    <p class="reviews-foot reveal">Reviews from our <a href="https://www.google.com/search?q=Youniverse+Garments+Dadar+reviews" target="_blank" rel="noopener">Google Business profile</a>. Read more or leave your own.</p>
   </div>
 </section>
 
@@ -375,6 +387,42 @@ For now, that means growing the wholesale side and slowly introducing the label 
     </div>
   </div>
 </footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ClothingStore",
+  "name": "Youniverse Garments",
+  "description": "Original western-wear designs, tailored and stitched in-house in Dadar, Mumbai. Family-run since 2015. Any order size, XS to 3XL.",
+  "url": "https://youniversegarments.com/",
+  "logo": "https://youniversegarments.com/logo.png",
+  "image": "https://youniversegarments.com/hero.jpeg",
+  "telephone": "+91-99671-11111",
+  "foundingDate": "2015",
+  "founders": [
+    {"@type": "Person", "name": "Mahesh Nishar"},
+    {"@type": "Person", "name": "Amit Nishar"}
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Shop No. 09, Ram Shyam Krupa CHS, Garage Galli, near Atlantic Plaza, Dadar West",
+    "addressLocality": "Mumbai",
+    "addressRegion": "Maharashtra",
+    "postalCode": "400028",
+    "addressCountry": "IN"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+    "opens": "10:30",
+    "closes": "20:30"
+  },
+  "sameAs": [
+    "https://www.instagram.com/youniversegarments/",
+    "https://www.facebook.com/youniversegarments/"
+  ]
+}
+</script>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
