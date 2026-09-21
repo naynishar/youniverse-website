@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Youniverse Clothing collection — original prints and considered fits from Dadar West, Mumbai.">
+  <meta name="theme-color" content="#f4f0e8">
+  <title>Catalogue | Youniverse Clothing</title>
+  <link rel="icon" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    :root {
+      --paper: #f4f0e8;
+      --ink: #171614;
+      --muted: #716b62;
+      --rust: #a45132;
+      --line: rgba(23, 22, 20, .14);
+      --serif: Georgia, "Times New Roman", serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--mono);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .topbar {
+      min-height: 31px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 0 18px;
+      background: var(--ink);
+      color: var(--paper);
+      font-size: 10px;
+      letter-spacing: .04em;
+    }
+
+    .nav {
+      width: min(1240px, calc(100% - 36px));
+      min-height: 78px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .logo {
+      color: var(--ink);
+      font: 600 29px/1 var(--serif);
+      letter-spacing: -.05em;
+      text-decoration: none;
+    }
+
+    .logo i { color: var(--rust); font-style: italic; font-weight: 500; }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a { color: var(--ink); text-decoration: none; }
+    .nav-links a:hover, .nav-links .active { color: var(--rust); }
+
+    .intro {
+      width: min(1240px, calc(100% - 36px));
+      margin: auto;
+      padding: 64px 0 42px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .intro h1 {
+      margin: 0;
+      font: 500 clamp(56px, 10vw, 130px)/.92 var(--serif);
+      letter-spacing: -.065em;
+    }
+
+    .intro h1 em { color: var(--rust); font-style: italic; }
+
+    .gallery {
+      width: min(1240px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 28px 0 70px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .gallery a {
+      display: block;
+      overflow: hidden;
+      background: #e6dfd3;
+      aspect-ratio: 4 / 5;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .gallery img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      background: #e6dfd3;
+      transition: opacity .18s ease, transform .25s ease;
+      content-visibility: auto;
+    }
+
+    .gallery img.loaded { opacity: 1; }
+    .gallery a:active img { transform: scale(.985); }
+
+    .status {
+      grid-column: 1 / -1;
+      padding: 28px 0;
+      color: var(--muted);
+      font-size: 11px;
+      text-align: center;
+    }
+
+    @media (max-width: 800px) {
+      .topbar { padding: 0 12px; font-size: 9px; }
+      .topbar span:last-child { text-align: right; }
+      .nav { min-height: 67px; }
+      .nav-links { gap: 13px; font-size: 9px; }
+      .nav-links li:nth-child(1), .nav-links li:nth-child(3) { display: none; }
+      .intro { padding: 42px 0 28px; }
+      .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; padding-top: 14px; }
+    }
+
+    @media (max-width: 390px) {
+      .logo { font-size: 25px; }
+      .nav-links { gap: 9px; font-size: 8px; }
+      .gallery { gap: 5px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .gallery img { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <span>Original prints · Made in Dadar</span>
+    <span>Retail & wholesale enquiries welcome</span>
+  </header>
+
+  <nav class="nav" aria-label="Main navigation">
+    <a class="logo" href="index.html">you<i>niverse</i></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a class="active" href="catalogue.html">Catalogue</a></li>
+      <li><a href="index.html#story">Story</a></li>
+      <li><a href="https://wa.me/919967111111" target="_blank" rel="noopener">WhatsApp</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="intro">
+      <h1>The <em>Catalogue</em></h1>
+    </header>
+
+    <section class="gallery" id="gallery" aria-label="Youniverse clothing collection">
+      <div class="status" id="status">Loading collection…</div>
+    </section>
+  </main>
+
+  <script>
+    const api = "https://api.github.com/repos/naynishar/youniverse-website/contents/products";
+    const gallery = document.getElementById("gallery");
+    const status = document.getElementById("status");
+
+    function addImage(file) {
+      const link = document.createElement("a");
+      link.href = file.download_url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.setAttribute("aria-label", "Open collection image");
+
+      const image = document.createElement("img");
+      image.src = file.download_url;
+      image.alt = "Youniverse Clothing collection image";
+      image.loading = "lazy";
+      image.decoding = "async";
+      image.addEventListener("load", () => image.classList.add("loaded"), { once: true });
+      image.addEventListener("error", () => link.remove(), { once: true });
+
+      link.appendChild(image);
+      gallery.appendChild(link);
+    }
+
+    fetch(api)
+      .then(response => {
+        if (!response.ok) throw new Error("Collection unavailable");
+        return response.json();
+      })
+      .then(files => {
+        const images = files
+          .filter(file => file.type === "file" && /\.(jpg|jpeg|png|webp)$/i.test(file.name))
+          .sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
+
+        status.remove();
+        images.forEach(addImage);
+
+        if (!images.length) {
+          gallery.innerHTML = '<div class="status">No collection images available.</div>';
+        }
+      })
+      .catch(() => {
+        status.textContent = "The collection could not load. Please refresh and try again.";
+      });
+  </script>
+</body>
+</html>
